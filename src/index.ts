@@ -1,4 +1,10 @@
-import './operators/index';
+import './operators/tap';
+import './operators/map';
+import './operators/pluck';
+import './operators/where';
+import './operators/take';
+import './operators/first';
+
 import { AsyncCollection } from './core/engines/async/async-collection';
 import { AsyncLazyCollection } from './core/engines/async/async-lazy-collection';
 import { Collection } from './core/engines/sync/collection';

@@ -5,13 +5,21 @@ import { Collection } from '@/core/engines/sync/collection';
 import { LazyCollection } from '@/core/engines/sync/lazy-collection';
 
 declare module '@/core/contracts/enumerable' {
-  interface Enumerable<T> {
-    /** 🔍 Sync: Intip data tanpa mengubah isinya */
-    tap(fn: (item: T) => void): this;
+  interface EnumerableMethods<T> {
+    /** 🟢 Sync Eager: Intip data Array */
+    tap(fn: (item: T) => void): Collection<T>;
   }
-  interface AsyncEnumerable<T> {
-    /** 🔵 Async: Intip data secara async */
-    tap(fn: (item: T) => void | Promise<void>): this;
+  interface LazyEnumerableMethods<T> {
+    /** 🟡 Sync Lazy: Intip data saat iterasi berjalan */
+    tap(fn: (item: T) => void): LazyCollection<T>;
+  }
+  interface AsyncEnumerableMethods<T> {
+    /** 🔵 Async Eager: Intip data list of Promises */
+    tap(fn: (item: T) => void | Promise<void>): AsyncCollection<T>;
+  }
+  interface AsyncLazyEnumerableMethods<T> {
+    /** 🟣 Async Lazy: Intip data dari stream asinkron */
+    tap(fn: (item: T) => void | Promise<void>): AsyncLazyCollection<T>;
   }
 }
 

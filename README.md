@@ -163,15 +163,27 @@ We are committed to making Node Collection the standard data manipulation librar
 
 ## 📊 Quick Comparison
 
-| Feature                         | Native JS |    LoDash    | Node Collection |
+![alt text](image-3.png)
+| Feature | Native JS | LoDash | Node Collection |
 | :------------------------------ | :-------: | :----------: | :-------------: |
-| Lazy Evaluation (Short-Circuit) |    ❌     | ⚠️ (Partial) |    ✅ (Full)    |
-| Async Stream Support            |    ❌     |      ❌      |       ✅        |
-| Perfect Type Inference          |    ⚠️     |      ⚠️      |       ✅        |
-| Pluggable vTable Architecture   |    ❌     |      ❌      |       ✅        |
-| Memory Efficiency for Big Data  |    Low    |    Medium    |    **High**     |
+| Lazy Evaluation (Short-Circuit) | ❌ | ⚠️ (Partial) | ✅ (Full) |
+| Async Stream Support | ❌ | ❌ | ✅ |
+| Perfect Type Inference | ⚠️ | ⚠️ | ✅ |
+| Pluggable vTable Architecture | ❌ | ❌ | ✅ |
+| Memory Efficiency for Big Data | Low | Medium | **High** |
 
 ---
+
+## ⚡ Performance: The "Native Killer" Benchmark
+
+Berdasarkan hasil stress-test menggunakan dataset **1.000.000 records** pada Mac Mini M2, engine Lazy kami menghancurkan performa Native JS Array secara telak dalam skenario pipeline kompleks (`filter -> filter -> map -> pluck -> take(10)`).
+
+| Metric                | Native Array (Eager) | Node Collection (Lazy) | Improvement              |
+| :-------------------- | :------------------- | :--------------------- | :----------------------- |
+| **Avg Latency**       | 679.58 ms            | **58.47 ms**           | **11.6x Lebih Cepat**    |
+| **P95 Latency**       | 1,250.00 ms          | **109.54 ms**          | **11.4x Lebih Stabil**   |
+| **CPU Items Scanned** | 1,000,000 items      | **9,001 items**        | **99.09% Lebih Efisien** |
+| **Major GC Stalls**   | 67 Stalls            | **6 Stalls**           | **11x Lebih Bersih**     |
 
 ## 🤝 Contributing
 

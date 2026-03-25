@@ -28,8 +28,9 @@ for (const augBody of augmentations) {
     const ifaceName = ifaceMatch[1];
     const ifaceBody = ifaceMatch[2];
 
-    // Inject ke interface kosong yang sudah ada di top-level
-    content = content.replace(new RegExp(`(interface ${ifaceName}<T>\\s*\\{)(\\s*\\})`), `$1${ifaceBody}}`);
+    if (!ifaceBody) continue;
+    const targetRegex = new RegExp(`(interface ${ifaceName}<T>\\s*\\{)`, 'g');
+    content = content.replace(targetRegex, `$1\n${ifaceBody}\n`);
   }
 }
 
