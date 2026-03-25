@@ -1,0 +1,38 @@
+name: Performance Benchmarks
+on:
+  push:
+    branches: [main]
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - name: Install & Build
+        run: |
+          pnpm install
+          pnpm run build
+      - name: Run k6 Benchmark
+        run: |
+          curl https://github.com/grafana/k6/releases/download/v0.49.0/k6-v0.49.0-linux-amd64.tar.gz -L | tar -xz
+          ./k6-v0.49.0-linux-amd64/k6 run --summary-export=result.json benchmarks/suites/unified.bench.js
+      - name: Store & Push Benchmark Result
+        uses: benchmark-action/github-action-benchmark@v1
+        with:
+          name: "Node Collections vs Native JS"
+          tool: 'k6'
+          output-file-path: result.json
+          gh-pages-branch: 'gh-pages'
+          benchmark-data-dir-path: 'benchmarks-data'
+          auto-push: true
+          comment-on-alert: true
