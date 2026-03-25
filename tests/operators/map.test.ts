@@ -8,6 +8,8 @@ import { AsyncLazyCollection } from '@/core/engines/async/async-lazy-collection'
 describe('collect() factory', () => {
   describe('routing', () => {
     it('T[] → Collection', () => {
+      const collections = collect([1, 2, 3, 4, 5, 6]);
+      console.log(collections);
       expect(collect([1, 2, 3])).toBeInstanceOf(Collection);
     });
 

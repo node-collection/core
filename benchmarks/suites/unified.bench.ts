@@ -130,5 +130,3 @@ export function runLazy() {
     error_rate.add(1);
   }
 }
-
-// ... (handleSummary Suhu yang tadi tetap dipakai) ...

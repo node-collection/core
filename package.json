@@ -52,6 +52,26 @@
   "author": "ElhakimDev99",
   "license": "MIT",
   "packageManager": "pnpm@10.26.2",
+  "peerDependencies": {
+    "dayjs": "^1.x",
+    "date-fns": "^3.x",
+    "moment": "^2.x",
+    "csv-parse": "^5.x"
+  },
+  "peerDependenciesMeta": {
+    "dayjs": {
+      "optional": true
+    },
+    "date-fns": {
+      "optional": true
+    },
+    "moment": {
+      "optional": true
+    },
+    "csv-parse": {
+      "optional": true
+    }
+  },
   "devDependencies": {
     "@types/k6": "^1.6.0",
     "@types/node": "^20.11.0",
@@ -60,6 +80,9 @@
     "@vitest/coverage-v8": "^4.1.1",
     "@vitest/ui": "^4.1.1",
     "concurrently": "^9.2.1",
+    "csv-parse": "^6.2.1",
+    "date-fns": "^4.1.0",
+    "dayjs": "^1.11.20",
     "esbuild": "^0.27.4",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^10.1.8",
@@ -67,6 +90,7 @@
     "fast-check": "^3.15.0",
     "globby": "^14.0.0",
     "jiti": "^2.6.1",
+    "moment": "^2.30.1",
     "prettier": "^3.8.1",
     "rollup-plugin-typescript-paths": "^1.5.0",
     "typedoc": "^0.28.18",
