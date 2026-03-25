@@ -1,11 +1,11 @@
 # 🌊 Node Collection Library
 
 [![npm version](https://img.shields.io/npm/v/node-collection.svg)](https://www.npmjs.com/package/node-collection)
-[![license](https://img.shields.io/github/license/elhakim/node-collection)](https://github.com/elhakim/node-collection/blob/main/LICENSE)
+[![license](https://img.shields.io/github/license/node-collection/core)](https://github.com/node-collection/core/blob/main/LICENSE)
 [![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/node-collection/core/pulls)
 
-> **Data Manipulation, Evolved.** Bring the magical experience of Laravel Collections to the Node.js ecosystem with perfect Type-Safety and 4-Dimensional Processing.
+**Data Manipulation, Evolved.** Bring the magical experience of Laravel Collections to the Node.js ecosystem with perfect Type-Safety and 4-Dimensional Processing.
 
 ---
 
@@ -191,4 +191,4 @@ If this library saves your server from OOM crashes or makes your code cleaner, p
 
 ## 📄 License
 
-ISC © [ElhakimDev99](https://www.google.com/search?q=https://github.com/elhakimdev99)
+[MIT](LICENSE) © [ElhakimDev99](https://github.com/elhakimdev99)
