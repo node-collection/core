@@ -1,6 +1,9 @@
 import { defineConfig } from 'vitepress';
 
 export default defineConfig({
+  base: '/core/',
+  title: 'Node Collection',
+  description: 'Data Manipulation, Evolved.',
   themeConfig: {
     nav: [
       { text: 'Guide', link: '/guide/getting-started' },
