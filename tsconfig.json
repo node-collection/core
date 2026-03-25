@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "lib": ["ESNext", "DOM"],
+    "declaration": true,
+    "sourceMap": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true,
+    "types": ["node"],
+    "paths": {
+      "@/*": ["./src/*"],
+      "@core/*": ["./src/core/*"],
+      "@operators/*": ["./src/operators"],
+      "@plugins/*": ["./src/plugins/*"]
+    },
+    "outDir": "./dist",
+    "rootDir": "./"
+  },
+  "include": ["src/**/*", "benchmarks/**/*", "vitest.config.ts", "build.config.ts", "scripts/**/*paths"],
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,10 @@
+# Exclude everything except dist
+src/
+tests/
+benchmarks/
+docs/
+.github/
+vitest.config.ts
+build.config.ts
+tsconfig.json
+.pnpm-debug.log

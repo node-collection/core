@@ -1,0 +1,14 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "entryPoints": ["src/index.ts"],
+  "entryPointStrategy": "expand",
+  "out": "docs/api",
+  "plugin": ["typedoc-plugin-markdown"],
+  "includeVersion": true,
+  "exclude": ["**/node_modules/**", "**/tests/**", "**/benchmarks/**"],
+  "name": "Node Collections API",
+  "hideBreadcrumbs": false,
+  "hidePageTitle": false,
+  "excludeNotDocumented": false,
+  "readme": "none"
+}

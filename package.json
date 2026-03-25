@@ -1,0 +1,77 @@
+{
+  "name": "node-collections",
+  "version": "1.0.0",
+  "description": "High-performance, zero-RAM structural data collection engine for Node.js.",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "sideEffects": [
+    "src/operators/**/*.ts",
+    "dist/operators/**/*.mjs"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev": "unbuild --stub",
+    "dev:test": "vitest --ui",
+    "test": "vitest run",
+    "coverage": "vitest run --coverage",
+    "build": "unbuild && tsx scripts/builds/merge.ts",
+    "bench": "node benchmarks/server.js & sleep 2 && k6 run benchmarks/k6-script.js",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts",
+    "prepublishOnly": "pnpm run build",
+    "docs:generate": "typedoc src/index.ts --out docs/api --plugin typedoc-plugin-markdown --hideBreadcrumbs true",
+    "docs:watch": "typedoc src/index.ts --out docs/api --plugin typedoc-plugin-markdown --entryPointStrategy expand --hideBreadcrumbs true --watch",
+    "docs:dev": "concurrently \"pnpm run docs:watch\" \"vitepress dev docs\"",
+    "docs:build": "pnpm run docs:generate && vitepress build docs"
+  },
+  "keywords": [
+    "node",
+    "collections",
+    "stream",
+    "async-iterator",
+    "fluent-api",
+    "lazy-evaluation",
+    "pipeline",
+    "typescript"
+  ],
+  "author": "ElhakimDev99",
+  "license": "MIT",
+  "packageManager": "pnpm@10.26.2",
+  "devDependencies": {
+    "@types/k6": "^1.6.0",
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^8.57.2",
+    "@typescript-eslint/parser": "^8.57.2",
+    "@vitest/coverage-v8": "^4.1.1",
+    "@vitest/ui": "^4.1.1",
+    "concurrently": "^9.2.1",
+    "eslint": "^8.56.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.5",
+    "fast-check": "^3.15.0",
+    "globby": "^14.0.0",
+    "jiti": "^2.6.1",
+    "prettier": "^3.8.1",
+    "rollup-plugin-typescript-paths": "^1.5.0",
+    "typedoc": "^0.28.18",
+    "typedoc-plugin-markdown": "^4.11.0",
+    "typescript": "^5.3.3",
+    "unbuild": "^3.6.1",
+    "vite": "^8.0.2",
+    "vitepress": "^1.6.4",
+    "vitest": "^4.1.1"
+  }
+}
