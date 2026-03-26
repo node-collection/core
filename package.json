@@ -53,10 +53,10 @@
   "license": "MIT",
   "packageManager": "pnpm@10.26.2",
   "peerDependencies": {
-    "dayjs": "^1.x",
+    "csv-parse": "^5.x",
     "date-fns": "^3.x",
-    "moment": "^2.x",
-    "csv-parse": "^5.x"
+    "dayjs": "^1.x",
+    "moment": "^2.x"
   },
   "peerDependenciesMeta": {
     "dayjs": {
@@ -93,6 +93,7 @@
     "moment": "^2.30.1",
     "prettier": "^3.8.1",
     "rollup-plugin-typescript-paths": "^1.5.0",
+    "tsconfig-paths": "^4.2.0",
     "typedoc": "^0.28.18",
     "typedoc-plugin-markdown": "^4.11.0",
     "typescript": "^5.3.3",

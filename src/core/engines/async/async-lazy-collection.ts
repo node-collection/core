@@ -1,5 +1,4 @@
 import { AsyncEnumerable, AsyncLazyEnumerableMethods } from '@/core/contracts/enumerable';
-import { coreHooks } from '@/core/types/hooks';
 
 export interface AsyncLazyCollection<T> extends AsyncEnumerable<T>, AsyncLazyEnumerableMethods<T> {}
 
@@ -40,9 +39,7 @@ export class AsyncLazyCollection<T> {
    *
    * @param   source  Any `AsyncIterable<T>` to wrap.
    */
-  constructor(protected source: AsyncIterable<T>) {
-    coreHooks.trigger('init', this);
-  }
+  constructor(protected source: AsyncIterable<T>) {}
 
   /**
    * Async-iterate over elements from the source one at a time.
@@ -59,7 +56,6 @@ export class AsyncLazyCollection<T> {
    * ```
    */
   async *[Symbol.asyncIterator](): AsyncGenerator<T, void, unknown> {
-    coreHooks.trigger('beforeIterate', this);
     let count = 0;
     try {
       for await (const item of this.source) {
@@ -67,10 +63,8 @@ export class AsyncLazyCollection<T> {
         count++;
       }
     } catch (err) {
-      coreHooks.trigger('error', err, this);
       throw err;
     } finally {
-      coreHooks.trigger('afterIterate', this, { count });
     }
   }
 

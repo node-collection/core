@@ -55,6 +55,8 @@ export const defineOperator: OperatorDefinitionApi = (
 
   const { name, definitions } = resolveDefinitions(nameOrProps, subjectOrFn, fnOrDefs);
 
+  console.debug(`Successfully resolved definition : ${name}, ${JSON.stringify(definitions)}`);
+
   if (!name || !definitions.length) return;
 
   definitions.forEach(({ subject: SubjectClass, fn }) => {
@@ -67,10 +69,19 @@ export const defineOperator: OperatorDefinitionApi = (
           `ditimpa dengan logic baru. Pastikan ini tidak menyebabkan konflik antar plugin!`,
       );
     }
+
+    const proxyValueFn = function (this: OperatorContext<typeof SubjectClass>, ...args: unknown[]) {
+      try {
+        const result = fn.apply(this, [this, ...args]);
+        return result;
+      } catch (error) {
+        throw error;
+      } finally {
+      }
+    };
+
     Object.defineProperty(SubjectClass.prototype, name, {
-      value: function (this: OperatorContext<typeof SubjectClass>, ...args: unknown[]) {
-        return fn.apply(this, [this, ...args]);
-      },
+      value: proxyValueFn,
       enumerable: false,
       configurable: true,
       writable: true,

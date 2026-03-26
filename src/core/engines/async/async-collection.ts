@@ -1,5 +1,4 @@
 import { AsyncEnumerable, AsyncEnumerableMethods } from '@/core/contracts/enumerable';
-import { coreHooks } from '@/core/types/hooks';
 
 export interface AsyncCollection<T> extends AsyncEnumerable<T>, AsyncEnumerableMethods<T> {}
 
@@ -35,9 +34,7 @@ export class AsyncCollection<T> {
    *
    * @param   items  An array of `Promise<T>` or a single `Promise<T[]>`.
    */
-  constructor(protected items: Promise<T>[] | Promise<T[]>) {
-    coreHooks.trigger('init', this);
-  }
+  constructor(protected items: Promise<T>[] | Promise<T[]>) {}
 
   /**
    * Async-iterate over all resolved values in insertion order.
@@ -52,7 +49,6 @@ export class AsyncCollection<T> {
    * ```
    */
   async *[Symbol.asyncIterator](): AsyncGenerator<T, void, unknown> {
-    coreHooks.trigger('beforeIterate', this);
     let count = 0;
     try {
       const resolvedItems = await this._resolve();
@@ -61,10 +57,8 @@ export class AsyncCollection<T> {
         count++;
       }
     } catch (err) {
-      coreHooks.trigger('error', err, this);
       throw err;
     } finally {
-      coreHooks.trigger('afterIterate', this, { count });
     }
   }
 
@@ -84,13 +78,10 @@ export class AsyncCollection<T> {
    * ```
    */
   async all(): Promise<T[]> {
-    coreHooks.trigger('beforeIterate', this);
     try {
       const result = await this._resolve();
-      coreHooks.trigger('afterIterate', this, { count: result.length });
       return result;
     } catch (err) {
-      coreHooks.trigger('error', err, this);
       throw err;
     }
   }

@@ -1,7 +1,6 @@
 import type { NodeCollectionPlugin, PluginApp, PluginOptionsTuple } from './types';
 import { globalContext } from './context';
 import { defineOperator } from '../core/define';
-import { AnyCollectionContext, coreHooks, HookSignatures } from '@/core';
 
 export class PluginManager {
   private installedPlugins = new Set<string>();
@@ -12,16 +11,7 @@ export class PluginManager {
 
     const app: PluginApp = {
       context: globalContext,
-      defineOperator: defineOperator.bind(null),
-      on(eventName, fn) {
-        coreHooks.register(eventName, fn);
-      },
-      trigger: function <K extends keyof HookSignatures, TContext extends AnyCollectionContext>(
-        eventName: K,
-        ...args: Parameters<HookSignatures<TContext>[K]>
-      ): void {
-        coreHooks.trigger<K, TContext>(eventName, ...args);
-      },
+      defineOperator: (...args: any[]) => (defineOperator as any)(...args),
     };
 
     if (options !== undefined) {

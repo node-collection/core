@@ -1,5 +1,4 @@
 import { Enumerable, EnumerableMethods } from '@/core/contracts/enumerable';
-import { coreHooks } from '@/core/types/hooks';
 
 export interface Collection<T> extends Enumerable<T>, EnumerableMethods<T> {}
 
@@ -27,9 +26,7 @@ export class Collection<T> {
    *
    * @param   items  The source array to wrap.
    */
-  constructor(protected items: T[]) {
-    coreHooks.trigger('init', this);
-  }
+  constructor(protected items: T[]) {}
 
   /**
    * Iterate over all elements in insertion order.
@@ -44,7 +41,6 @@ export class Collection<T> {
    * ```
    */
   *[Symbol.iterator](): Generator<T, void, unknown> {
-    coreHooks.trigger('beforeIterate', this);
     let count = 0;
     try {
       for (const item of this.items) {
@@ -52,10 +48,8 @@ export class Collection<T> {
         count++;
       }
     } catch (err) {
-      coreHooks.trigger('error', err, this);
       throw err;
     } finally {
-      coreHooks.trigger('afterIterate', this, { count });
     }
   }
 
@@ -72,13 +66,10 @@ export class Collection<T> {
    * ```
    */
   all(): T[] {
-    coreHooks.trigger('beforeIterate', this);
     try {
       const result = [...this.items];
-      coreHooks.trigger('afterIterate', this, { count: result.length });
       return result;
     } catch (err) {
-      coreHooks.trigger('error', err, this);
       throw err;
     }
   }

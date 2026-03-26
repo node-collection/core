@@ -1,5 +1,4 @@
 import { Enumerable, LazyEnumerableMethods } from '@/core/contracts/enumerable';
-import { coreHooks } from '@/core/types/hooks';
 
 export interface LazyCollection<T> extends Enumerable<T>, LazyEnumerableMethods<T> {}
 
@@ -31,9 +30,7 @@ export class LazyCollection<T> {
    *
    * @param   source  Any `Iterable<T>` to wrap.
    */
-  constructor(protected source: Iterable<T>) {
-    coreHooks.trigger('init', this);
-  }
+  constructor(protected source: Iterable<T>) {}
 
   /**
    * Iterate over all elements from the source iterable.
@@ -48,7 +45,6 @@ export class LazyCollection<T> {
    * ```
    */
   *[Symbol.iterator](): Generator<T, void, unknown> {
-    coreHooks.trigger('beforeIterate', this);
     let count = 0;
     try {
       // Kita buka yield* jadi loop manual untuk tracking count
@@ -57,10 +53,8 @@ export class LazyCollection<T> {
         count++;
       }
     } catch (err) {
-      coreHooks.trigger('error', err, this);
       throw err;
     } finally {
-      coreHooks.trigger('afterIterate', this, { count });
     }
   }
 

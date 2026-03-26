@@ -31,7 +31,7 @@ export * from './operators';
  *
  * @category  Factory
  */
-export function collect<T>(items: Promise<T>[]): AsyncCollection<T>;
+export function collect<T>(items: Promise<T[]> | Promise<T>[]): AsyncCollection<T>;
 
 /**
  * Wrap a standard array into an eager sync collection.
@@ -98,25 +98,56 @@ export function collect<T>(items: Iterable<T>): LazyCollection<T>;
 /**
  * @internal
  */
+// export function collect(items: any): any {
+//   // // A. Async Iterable — checked before Array since AsyncGenerator is not an Array
+//   // if (items != null && typeof items[Symbol.asyncIterator] === 'function') {
+//   //   return new AsyncLazyCollection(items);
+//   // }
+//   // // B. Array — checked before Iterable since Array IS an Iterable
+//   // if (Array.isArray(items)) {
+//   //   if (items.length > 0 && items[0] instanceof Promise) {
+//   //     return new AsyncCollection(items);
+//   //   }
+//   //   return new Collection(items);
+//   // }
+//   // // C. Sync Iterable — Set, Map, custom generators
+//   // if (items != null && typeof items[Symbol.iterator] === 'function') {
+//   //   return new LazyCollection(items);
+//   // }
+//   // // D. Fallback — wrap single value or return an empty Collection
+//   // return new Collection(items != null ? [items] : []);
+
+// }
+
 export function collect(items: any): any {
-  // A. Async Iterable — checked before Array since AsyncGenerator is not an Array
-  if (items != null && typeof items[Symbol.asyncIterator] === 'function') {
+  if (items == null) return new Collection([]);
+
+  // 1. 🌌 CEK ASYNC ITERABLE (Dimensi 4)
+  // Harus paling atas karena AsyncGenerator punya method khusus ini.
+  if (typeof items[Symbol.asyncIterator] === 'function') {
     return new AsyncLazyCollection(items);
   }
 
-  // B. Array — checked before Iterable since Array IS an Iterable
+  // 2. 🌊 CEK PROMISE (Dimensi 3 - Kasus stubAsyncEager)
+  // Ini yang bikin Dimensi 3 lu dapet 0 kemarin!
+  if (items instanceof Promise) {
+    return new AsyncCollection(items);
+  }
+
+  // 3. 🏎️ CEK ARRAY (Dimensi 1 atau Dimensi 3 versi Array of Promises)
   if (Array.isArray(items)) {
+    // Jika isinya [Promise, Promise]
     if (items.length > 0 && items[0] instanceof Promise) {
       return new AsyncCollection(items);
     }
     return new Collection(items);
   }
 
-  // C. Sync Iterable — Set, Map, custom generators
-  if (items != null && typeof items[Symbol.iterator] === 'function') {
+  // 4. 🐌 CEK SYNC ITERABLE (Dimensi 2 - Generator/Set/Map)
+  if (typeof items[Symbol.iterator] === 'function') {
     return new LazyCollection(items);
   }
 
-  // D. Fallback — wrap single value or return an empty Collection
-  return new Collection(items != null ? [items] : []);
+  // 5. 🪵 FALLBACK
+  return new Collection([items]);
 }
