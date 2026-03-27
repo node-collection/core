@@ -1,0 +1,43 @@
+name: Publish to NPM
+
+on:
+  push:
+    tags:
+      - 'v*' # Trigger cuma kalau kamu push tag seperti v1.0.0
+
+jobs:
+  build-and-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10 # Sesuai packageManager di package.json kamu
+
+      - name: Setup Node.js
+        uses: actions/checkout@v4
+        with:
+          node-version: 18 # Minimum requirement kamu
+          cache: 'pnpm'
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Security & Quality Check
+        run: |
+          pnpm run lint
+          pnpm run typecheck
+
+      - name: Run Tests
+        run: pnpm run test
+
+      - name: Build Library
+        run: pnpm run build
+
+      - name: Publish to NPM
+        run: pnpm publish --no-git-checks --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
