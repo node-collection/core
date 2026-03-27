@@ -14,8 +14,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10 # Sesuai packageManager di package.json kamu
 
       - name: Setup Node.js
         uses: actions/checkout@v4
