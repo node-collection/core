@@ -1,7 +1,7 @@
 import tseslint from '@typescript-eslint/eslint-plugin';
 import tsparser from '@typescript-eslint/parser';
-import prettierPlugin from 'eslint-plugin-prettier';
 import configPrettier from 'eslint-config-prettier';
+import prettierPlugin from 'eslint-plugin-prettier';
 
 export default [
   {
@@ -21,8 +21,16 @@ export default [
     rules: {
       ...tseslint.configs.recommended.rules,
       'prettier/prettier': 'error',
-      '@typescript-eslint/no-explicit-any': 'warn',
-      '@typescript-eslint/no-unused-vars': ['error', { argsIgnorePattern: '^_' }],
+      '@typescript-eslint/no-explicit-any': 'off', // Matikan jika terlalu mengganggu saat prototyping
+      '@typescript-eslint/no-empty-object-type': 'off', // Ijinkan interface kosong untuk placeholder operator
+      '@typescript-eslint/no-unsafe-declaration-merging': 'warn', // Ubah jadi warn saja
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_', // Ijinkan variabel underscore tidak terpakai
+        },
+      ],
       'no-console': 'off',
     },
   },
