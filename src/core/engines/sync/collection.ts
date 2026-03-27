@@ -19,6 +19,7 @@ export interface Collection<T> extends Enumerable<T>, EnumerableMethods<T> {}
  * @category  Engine
  */
 export class Collection<T> {
+  protected _cursor = 0;
   /**
    * Create a new Collection wrapping the given array.
    * The source is stored as-is — call {@link all}
@@ -27,31 +28,6 @@ export class Collection<T> {
    * @param   items  The source array to wrap.
    */
   constructor(protected items: T[]) {}
-
-  /**
-   * Iterate over all elements in insertion order.
-   * Supports `for...of`, spread, and
-   * destructuring natively.
-   *
-   * @example
-   * ```ts
-   * for (const item of new Collection([1, 2, 3])) {
-   *   console.log(item);
-   * }
-   * ```
-   */
-  *[Symbol.iterator](): Generator<T, void, unknown> {
-    let count = 0;
-    try {
-      for (const item of this.items) {
-        yield item;
-        count++;
-      }
-    } catch (err) {
-      throw err;
-    } finally {
-    }
-  }
 
   /**
    * Materialize all elements into a new array.
@@ -72,5 +48,76 @@ export class Collection<T> {
     } catch (err) {
       throw err;
     }
+  }
+
+  current() {
+    return this.items[this._cursor];
+  }
+
+  count(): number {
+    return this.total();
+  }
+
+  total(): number {
+    return this.items.length;
+  }
+
+  processed(): number {
+    return this._cursor;
+  }
+
+  remaining(): number {
+    return this.total() - this._cursor;
+  }
+
+  progress(): number {
+    const total = this.total();
+    if (total === 0) return 0;
+    return Math.round((this._cursor / total) * 100);
+  }
+
+  toArray(): T[] {
+    return this.all();
+  }
+
+  toJSON(): T[] {
+    return this.all();
+  }
+
+  toString(): string {
+    return `[NodeCollections::${this.constructor.name} (${this.processed()}/${this.total()} processed)]`;
+  }
+
+  /**
+   * Iterate over all elements in insertion order.
+   * Supports `for...of`, spread, and
+   * destructuring natively.
+   *
+   * @example
+   * ```ts
+   * for (const item of new Collection([1, 2, 3])) {
+   *   console.log(item);
+   * }
+   * ```
+   */
+  *[Symbol.iterator](): Generator<T, void, unknown> {
+    this._cursor = 0;
+    try {
+      for (const item of this.items) {
+        yield item;
+        this._cursor++;
+      }
+    } catch (err) {
+      throw err;
+    } finally {
+    }
+  }
+
+  [Symbol.for('nodejs.util.inspect.custom')]() {
+    const data = this.all();
+    const count = this.items.length;
+    const label = this.constructor.name;
+
+    return `${label}(${this.total()}) [Cursor: ${this.processed()}] ${JSON.stringify(data, null, 2)}`;
   }
 }

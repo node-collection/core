@@ -1,13 +1,13 @@
-import { Registry } from './contracts/registry';
-import { Constructor } from './types/common';
+import { Registry } from './contracts';
 import {
+  Constructor,
   OperatorBlueprintProps,
   OperatorCollectionProps,
   OperatorContext,
   OperatorDefinitionApi,
   OperatorDefinitionProps,
   OperatorFn,
-} from './types/operator';
+} from './types';
 
 interface Resolved {
   name: string;

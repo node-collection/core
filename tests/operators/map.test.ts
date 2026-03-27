@@ -1,9 +1,7 @@
-import { describe, it, expect } from 'vitest';
+import { AsyncCollection, AsyncLazyCollection, Collection, LazyCollection } from '@/core/engines';
 import { collect } from '@/index';
-import { Collection } from '@/core/engines/sync/collection';
-import { LazyCollection } from '@/core/engines/sync/lazy-collection';
-import { AsyncCollection } from '@/core/engines/async/async-collection';
-import { AsyncLazyCollection } from '@/core/engines/async/async-lazy-collection';
+
+import { describe, expect, it } from 'vitest';
 
 describe('collect() factory', () => {
   describe('routing', () => {

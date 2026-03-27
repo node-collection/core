@@ -7,5 +7,9 @@
   "useTabs": false,
   "endOfLine": "lf",
   "bracketSpacing": true,
-  "arrowParens": "always"
+  "arrowParens": "always",
+  "plugins": ["@trivago/prettier-plugin-sort-imports"],
+  "importOrder": ["^@/core/operators/(.*)$", "^@/(.*)$", "^[./]", "^node:(.*)$", "<THIRD_PARTY_MODULES>"],
+  "importOrderSeparation": true,
+  "importOrderSortSpecifiers": true
 }

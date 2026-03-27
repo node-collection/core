@@ -1,8 +1,5 @@
-import { defineOperator } from '@/core/define';
-import { AsyncCollection } from '@/core/engines/async/async-collection';
-import { AsyncLazyCollection } from '@/core/engines/async/async-lazy-collection';
-import { Collection } from '@/core/engines/sync/collection';
-import { LazyCollection } from '@/core/engines/sync/lazy-collection';
+import { defineOperator } from '../define';
+import { AsyncCollection, AsyncLazyCollection, Collection, LazyCollection } from '../engines';
 
 declare module '@/core/contracts/enumerable' {
   interface Enumerable<T> {

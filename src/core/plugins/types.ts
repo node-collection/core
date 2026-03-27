@@ -1,4 +1,5 @@
-import { AsyncEnumerableMethods, EnumerableMethods, OperatorDefinitionApi } from '@/core';
+import { AsyncEnumerableMethods, EnumerableMethods } from '../contracts';
+import { OperatorDefinitionApi } from '../types';
 import { PluginContext } from './context';
 
 export type RegisteredOperators = keyof EnumerableMethods<unknown> | keyof AsyncEnumerableMethods<unknown>;

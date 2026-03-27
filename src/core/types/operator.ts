@@ -36,7 +36,7 @@ export interface OperatorBlueprintProps<TName extends string = string, TArgs ext
  */
 export interface OperatorCollectionProps {
   readonly namespace?: string;
-  readonly blueprints: readonly OperatorBlueprintProps<string, any[], any>[];
+  readonly blueprints: readonly OperatorBlueprintProps<string, unknown[], unknown>[];
 }
 
 /**

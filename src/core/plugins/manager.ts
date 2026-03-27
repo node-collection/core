@@ -1,6 +1,6 @@
-import type { NodeCollectionPlugin, PluginApp, PluginOptionsTuple } from './types';
+import { defineOperator } from '../define';
 import { globalContext } from './context';
-import { defineOperator } from '../core/define';
+import { NodeCollectionPlugin, PluginApp, PluginOptionsTuple } from './types';
 
 export class PluginManager {
   private installedPlugins = new Set<string>();

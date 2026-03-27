@@ -1,5 +1,7 @@
-import { collect as collection } from '../../src/index';
-import { NodeCollectionPlugin, use } from '@/plugins ';
+import { Registry } from '@/core/contracts';
+import { Collection } from '@/core/engines';
+import { NodeCollectionPlugin, use } from '@/core/plugins';
+import { collect as collection } from '@/index';
 
 interface Employee {
   id: number;
@@ -48,6 +50,10 @@ const TelemetryPlugin: NodeCollectionPlugin<TelemetryPluginOptions> = {
 };
 async function runTests() {
   await use(TelemetryPlugin, {});
+  console.log(
+    '🔍 Checking Registry for "where":',
+    Registry.check(Collection, 'where', () => {}),
+  );
 
   // Formatter Rupiah (IDR)
   const formatter = new Intl.NumberFormat('id-ID', {
@@ -69,7 +75,7 @@ async function runTests() {
   // ---------------------------------------------------------
   console.log('--- 🏎️ 1. DIMENSI SYNC EAGER (Array Biasa) ---');
   const syncResult = collect.where('department', 'Engineering').map(mapperLogic).take(2).all();
-
+  console.log(collect);
   console.log(`🎯 TOTAL HASIL: ${syncResult.length} Karyawan.,`);
   console.log(syncResult);
 
