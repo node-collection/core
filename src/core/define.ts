@@ -6,17 +6,24 @@ import {
   OperatorContext,
   OperatorDefinitionApi,
   OperatorDefinitionProps,
-  OperatorFn,
 } from './types';
 
 interface Resolved {
   name: string;
   definitions: readonly OperatorDefinitionProps[];
 }
+
+/**
+ * Helper to resolve operator definitions from various input formats.
+ */
 function resolveDefinitions(nameOrProps: unknown, subjectOrFn?: unknown, fnOrDefs?: unknown): Resolved {
-  const isBlueprint = (v: any): v is OperatorBlueprintProps => typeof v === 'object' && v !== null && 'definitions' in v;
-  const isShorthand = (n: any, f: any): f is Function => typeof n === 'string' && typeof f === 'function';
-  const isInternalList = (n: any, s: any): s is any[] => typeof n === 'string' && Array.isArray(s);
+  // Gunakan unknown dan type guard yang lebih ketat
+  const isBlueprint = (v: unknown): v is OperatorBlueprintProps => typeof v === 'object' && v !== null && 'definitions' in v;
+
+  // Ganti Function dengan signature yang lebih aman
+  const isShorthand = (n: unknown, f: unknown): f is (...args: unknown[]) => unknown => typeof n === 'string' && typeof f === 'function';
+
+  const isInternalList = (n: unknown, s: unknown): s is readonly OperatorDefinitionProps[] => typeof n === 'string' && Array.isArray(s);
 
   switch (true) {
     case isBlueprint(nameOrProps): {
@@ -25,11 +32,11 @@ function resolveDefinitions(nameOrProps: unknown, subjectOrFn?: unknown, fnOrDef
     }
     case isShorthand(nameOrProps, fnOrDefs): {
       const name = nameOrProps as string;
-      const subjects = Array.isArray(subjectOrFn) ? subjectOrFn : [subjectOrFn];
-      const fn = fnOrDefs as OperatorFn<OperatorContext<Constructor<object>>, unknown[], unknown>;
+      const subjects = Array.isArray(subjectOrFn) ? subjectOrFn : [subjectOrFn as Constructor];
+      const fn = fnOrDefs as (...args: unknown[]) => unknown;
       return {
         name,
-        definitions: subjects.map((subject) => ({ subject: subject as Constructor<object>, fn })),
+        definitions: subjects.map((subject) => ({ subject: subject as Constructor, fn })),
       };
     }
     case isInternalList(nameOrProps, subjectOrFn): {
@@ -48,19 +55,21 @@ export const defineOperator: OperatorDefinitionApi = (
   subjectOrFn?: Constructor | Constructor[] | unknown,
   fnOrDefs?: unknown,
 ): void => {
+  // 1. Handle Collection of Blueprints
   if (typeof nameOrProps === 'object' && nameOrProps !== null && 'blueprints' in nameOrProps) {
     (nameOrProps as OperatorCollectionProps).blueprints.forEach((b) => defineOperator(b));
     return;
   }
 
+  // 2. Resolve Name & Definitions
   const { name, definitions } = resolveDefinitions(nameOrProps, subjectOrFn, fnOrDefs);
-
-  console.debug(`Successfully resolved definition : ${name}, ${JSON.stringify(definitions)}`);
 
   if (!name || !definitions.length) return;
 
+  // 3. Inject to Prototypes
   definitions.forEach(({ subject: SubjectClass, fn }) => {
     if (!SubjectClass?.prototype) return;
+
     const status = Registry.check(SubjectClass, name, fn);
     if (status === 'SAME') return;
     if (status === 'CONFLICT') {
@@ -70,22 +79,19 @@ export const defineOperator: OperatorDefinitionApi = (
       );
     }
 
+    // Proxy function untuk menjaga context 'this'
     const proxyValueFn = function (this: OperatorContext<typeof SubjectClass>, ...args: unknown[]) {
-      try {
-        const result = fn.apply(this, [this, ...args]);
-        return result;
-      } catch (error) {
-        throw error;
-      } finally {
-      }
+      return fn.apply(this, [this, ...args]);
     };
 
+    // Injection menggunakan Object.defineProperty agar tidak enumerable
     Object.defineProperty(SubjectClass.prototype, name, {
       value: proxyValueFn,
       enumerable: false,
       configurable: true,
       writable: true,
     });
+
     Registry.register(SubjectClass, name, fn);
   });
 };

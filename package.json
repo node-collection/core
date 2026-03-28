@@ -35,10 +35,10 @@
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
     "prepublishOnly": "pnpm run build",
-    "docs:generate": "typedoc src/index.ts --out docs/api --plugin typedoc-plugin-markdown --hideBreadcrumbs true",
-    "docs:watch": "typedoc src/index.ts --out docs/api --plugin typedoc-plugin-markdown --entryPointStrategy expand --hideBreadcrumbs true --watch",
-    "docs:dev": "concurrently \"pnpm run docs:watch\" \"vitepress dev docs\"",
-    "docs:build": "pnpm run docs:generate && vitepress build docs"
+    "docs:clean": "rm -rf docs/api",
+    "docs:generate": "pnpm docs:clean && typedoc --entryPointStrategy expand --entryPoints src --out docs/api --plugin typedoc-plugin-markdown --hideBreadcrumbs true --entryFileName index.md",
+    "docs:watch": "typedoc --entryPointStrategy expand --entryPoints src --out docs/api --plugin typedoc-plugin-markdown --hideBreadcrumbs true --entryFileName index.md --watch --logLevel Error",
+    "docs:dev": "pnpm docs:generate && concurrently -n \"TYPEDOC,VITEPRESS\" -c \"blue,green\" --kill-others \"typedoc --entryPointStrategy expand --entryPoints src --out docs/api --plugin typedoc-plugin-markdown --hideBreadcrumbs true --entryFileName index.md --watch\" \"vitepress dev docs\""
   },
   "keywords": [
     "node",
@@ -102,6 +102,7 @@
     "unbuild": "^3.6.1",
     "vite": "^8.0.2",
     "vitepress": "^1.6.4",
+    "vitepress-sidebar": "^1.33.1",
     "vitest": "^4.1.1"
   }
 }

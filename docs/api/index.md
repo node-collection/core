@@ -4,35 +4,32 @@
 
 # Node Collections API v1.0.0
 
-## Engine
+## Modules
 
-- [AsyncCollection](classes/AsyncCollection.md)
-- [AsyncLazyCollection](classes/AsyncLazyCollection.md)
-- [Collection](classes/Collection.md)
-- [LazyCollection](classes/LazyCollection.md)
-
-## Factory
-
-- [collect](functions/collect.md)
-
-## Other
-
-- [AsyncEnumerable](interfaces/AsyncEnumerable.md)
-- [AsyncEnumerableMethods](interfaces/AsyncEnumerableMethods.md)
-- [AsyncLazyEnumerableMethods](interfaces/AsyncLazyEnumerableMethods.md)
-- [Enumerable](interfaces/Enumerable.md)
-- [EnumerableMethods](interfaces/EnumerableMethods.md)
-- [LazyEnumerableMethods](interfaces/LazyEnumerableMethods.md)
-- [OperatorBlueprintProps](interfaces/OperatorBlueprintProps.md)
-- [OperatorCollectionProps](interfaces/OperatorCollectionProps.md)
-- [OperatorDefinitionApi](interfaces/OperatorDefinitionApi.md)
-- [OperatorDefinitionProps](interfaces/OperatorDefinitionProps.md)
-- [Constructor](type-aliases/Constructor.md)
-- [FnParams](type-aliases/FnParams.md)
-- [FnReturn](type-aliases/FnReturn.md)
-- [MethodOf](type-aliases/MethodOf.md)
-- [OperatorContext](type-aliases/OperatorContext.md)
-- [OperatorFn](type-aliases/OperatorFn.md)
-- [Unwrap](type-aliases/Unwrap.md)
-- [defineOperator](variables/defineOperator.md)
-- [Registry](variables/Registry.md)
+- [core/collect](core/collect/index.md)
+- [core/contracts](core/contracts/index.md)
+- [core/contracts/enumerable](core/contracts/enumerable/index.md)
+- [core/contracts/registry](core/contracts/registry/index.md)
+- [core/define](core/define/index.md)
+- [core/engines](core/engines/index.md)
+- [core/engines/async/async-collection](core/engines/async/async-collection/index.md)
+- [core/engines/async/async-lazy-collection](core/engines/async/async-lazy-collection/index.md)
+- [core/engines/sync/collection](core/engines/sync/collection/index.md)
+- [core/engines/sync/lazy-collection](core/engines/sync/lazy-collection/index.md)
+- [core/operators](core/operators/index.md)
+- [core/operators/filter](core/operators/filter/index.md)
+- [core/operators/first](core/operators/first/index.md)
+- [core/operators/map](core/operators/map/index.md)
+- [core/operators/pluck](core/operators/pluck/index.md)
+- [core/operators/take](core/operators/take/index.md)
+- [core/operators/tap](core/operators/tap/index.md)
+- [core/operators/where](core/operators/where/index.md)
+- [core/plugins](core/plugins/index.md)
+- [core/plugins/context](core/plugins/context/index.md)
+- [core/plugins/manager](core/plugins/manager/index.md)
+- [core/plugins/types](core/plugins/types/index.md)
+- [core/plugins/use](core/plugins/use/index.md)
+- [core/types](core/types/index.md)
+- [core/types/common](core/types/common/index.md)
+- [core/types/operator](core/types/operator/index.md)
+- [index](index/index.md)

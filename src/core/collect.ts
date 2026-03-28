@@ -6,7 +6,7 @@ import { AsyncCollection, AsyncLazyCollection, Collection, LazyCollection } from
  * resolving the entire set before any operator runs.
  *
  * @param   items  An array of `Promise<T>` to wrap.
- * @returns        An {@link AsyncCollection} instance.
+ * @returns        An `AsyncCollection` instance.
  *
  * @example
  * ```ts
@@ -26,7 +26,7 @@ function collect<T>(items: Promise<T[]> | Promise<T>[]): AsyncCollection<T>;
  * materializing results into a new array each step.
  *
  * @param   items  A standard `T[]` array to wrap.
- * @returns        A {@link Collection} instance.
+ * @returns        A `Collection` instance.
  *
  * @example
  * ```ts
@@ -45,7 +45,7 @@ function collect<T>(items: T[]): Collection<T>;
  * you iterate with `for await...of` or call `.all()`.
  *
  * @param   items  Any `AsyncIterable<T>` (e.g. async generator, stream).
- * @returns        An {@link AsyncLazyCollection} instance.
+ * @returns        An `AsyncLazyCollection` instance.
  *
  * @example
  * ```ts
@@ -67,7 +67,7 @@ function collect<T>(items: AsyncIterable<T>): AsyncLazyCollection<T>;
  * intermediate array allocation on every operator step.
  *
  * @param   items  Any `Iterable<T>` (e.g. `Set`, `Map`, generator).
- * @returns        A {@link LazyCollection} instance.
+ * @returns        A `LazyCollection` instance.
  *
  * @example
  * ```ts

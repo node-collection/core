@@ -1,0 +1,21 @@
+/* docs/.vitepress/theme/style.css */
+:root {
+  /* Warna tombol "Get Started" dan aksen (Node Green) */
+  --vp-c-brand-1: #68a063;
+  --vp-c-brand-2: #43853d;
+  --vp-c-brand-3: #8cc84b;
+
+  /* Gradasi teks judul "Node Collections" */
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #43853d 30%, #8cc84b);
+}
+
+.dark {
+  /* Warna tombol di Dark Mode (Lebih terang agar kontras) */
+  --vp-c-brand-1: #8cc84b;
+  --vp-c-brand-2: #68a063;
+  --vp-c-brand-3: #43853d;
+
+  /* Gradasi teks judul di Dark Mode */
+  --vp-home-hero-name-background: -webkit-linear-gradient(120deg, #8cc84b 30%, #68a063);
+}
