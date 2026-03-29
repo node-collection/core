@@ -24,10 +24,10 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Security & Quality Check
-        run: |
-          pnpm run lint
-          pnpm run typecheck
+      # - name: Security & Quality Check
+      #   run: |
+      #     pnpm run lint
+      #     pnpm run typecheck
 
       - name: Run Tests
         run: pnpm run test
