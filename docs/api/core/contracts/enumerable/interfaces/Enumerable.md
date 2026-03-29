@@ -4,7 +4,7 @@
 
 # Interface: Enumerable\<T\>
 
-Defined in: [core/contracts/enumerable.ts:185](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L185)
+Defined in: [core/contracts/enumerable.ts:185](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L185)
 
 Base contract for all **synchronous** collection engines.
 
@@ -45,7 +45,7 @@ The type of elements held by the collection.
 
 > **all**(): `T`[]
 
-Defined in: [core/contracts/enumerable.ts:202](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L202)
+Defined in: [core/contracts/enumerable.ts:202](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L202)
 
 Materialises all elements into a plain JavaScript array.
 
@@ -73,7 +73,7 @@ const items = collect([10, 20, 30]).all();
 
 > **count**(): `number`
 
-Defined in: [core/contracts/enumerable.ts:253](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L253)
+Defined in: [core/contracts/enumerable.ts:253](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L253)
 
 Returns the total number of elements in the collection.
 
@@ -101,7 +101,7 @@ collect(new Set([1, 2])).count(); // 2
 
 > **current**(): `T` \| `undefined`
 
-Defined in: [core/contracts/enumerable.ts:273](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L273)
+Defined in: [core/contracts/enumerable.ts:273](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L273)
 
 Returns the element at the current iterator cursor position.
 
@@ -127,31 +127,11 @@ for (const item of col) {
 
 ***
 
-### first()
-
-> **first**(`fn?`): `T` \| `null`
-
-Defined in: [core/operators/first.ts:7](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/first.ts#L7)
-
-🎯 Sync: Ambil item pertama (atau yang lolos kriteria)
-
-#### Parameters
-
-##### fn?
-
-(`item`) => `boolean`
-
-#### Returns
-
-`T` \| `null`
-
-***
-
 ### progress()
 
 > **progress**(): `number`
 
-Defined in: [core/contracts/enumerable.ts:333](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L333)
+Defined in: [core/contracts/enumerable.ts:333](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L333)
 
 Returns the percentage of elements yielded in the current pass (0–100).
 
@@ -182,7 +162,7 @@ for (const _ of col) {
 
 > **remaining**(): `number` \| `null`
 
-Defined in: [core/contracts/enumerable.ts:312](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L312)
+Defined in: [core/contracts/enumerable.ts:312](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L312)
 
 Returns the number of elements not yet consumed by the current pass.
 
@@ -213,7 +193,7 @@ for (const _ of col) {
 
 > **toArray**(): `T`[]
 
-Defined in: [core/contracts/enumerable.ts:235](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L235)
+Defined in: [core/contracts/enumerable.ts:235](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L235)
 
 Alias for `all`.
 
@@ -240,7 +220,7 @@ const arr = collect(new Set([1, 2, 3])).toArray();
 
 > **toJSON**(): `T`[]
 
-Defined in: [core/contracts/enumerable.ts:218](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L218)
+Defined in: [core/contracts/enumerable.ts:218](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L218)
 
 Serialises the collection to a plain array for `JSON.stringify`.
 
@@ -266,7 +246,7 @@ const json = JSON.stringify(collect([1, 2, 3]));
 
 > **toString**(): `string`
 
-Defined in: [core/contracts/enumerable.ts:35](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L35)
+Defined in: [core/contracts/enumerable.ts:35](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L35)
 
 Returns a human-readable label identifying the engine,
 current cursor position, and total element count.
@@ -303,7 +283,7 @@ console.log(col.toString());
 
 > **total**(): `number`
 
-Defined in: [core/contracts/enumerable.ts:291](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L291)
+Defined in: [core/contracts/enumerable.ts:291](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L291)
 
 Returns the total number of elements in the collection.
 

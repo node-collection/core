@@ -4,7 +4,7 @@
 
 # Class: AsyncLazyCollection\<T\>
 
-Defined in: [core/engines/async/async-lazy-collection.ts:4](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L4)
+Defined in: [core/engines/async/async-lazy-collection.ts:4](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L4)
 
 A lazy, asynchronous collection backed by any `AsyncIterable<T>`.
 
@@ -69,7 +69,7 @@ The type of values yielded by the async iterable.
 
 > **new AsyncLazyCollection**\<`T`\>(`source`): `AsyncLazyCollection`\<`T`\>
 
-Defined in: [core/engines/async/async-lazy-collection.ts:120](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L120)
+Defined in: [core/engines/async/async-lazy-collection.ts:120](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L120)
 
 Creates a new `AsyncLazyCollection` wrapping the given async iterable.
 
@@ -112,7 +112,7 @@ const col = collect(gen());
 
 > `protected` **\_current**: `T` \| `undefined`
 
-Defined in: [core/engines/async/async-lazy-collection.ts:67](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L67)
+Defined in: [core/engines/async/async-lazy-collection.ts:67](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L67)
 
 **`Internal`**
 
@@ -124,7 +124,7 @@ The most recently yielded item. `undefined` before iteration.
 
 > `protected` **\_errors**: `Error`[] = `[]`
 
-Defined in: [core/engines/async/async-lazy-collection.ts:97](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L97)
+Defined in: [core/engines/async/async-lazy-collection.ts:97](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L97)
 
 **`Internal`**
 
@@ -136,7 +136,7 @@ Errors thrown by the source during async iteration.
 
 > `protected` **\_processed**: `number` = `0`
 
-Defined in: [core/engines/async/async-lazy-collection.ts:60](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L60)
+Defined in: [core/engines/async/async-lazy-collection.ts:60](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L60)
 
 **`Internal`**
 
@@ -149,7 +149,7 @@ Incremented by one per yield inside the async iterator.
 
 > `protected` **\_rejectedCount**: `number` = `0`
 
-Defined in: [core/engines/async/async-lazy-collection.ts:90](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L90)
+Defined in: [core/engines/async/async-lazy-collection.ts:90](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L90)
 
 **`Internal`**
 
@@ -161,7 +161,7 @@ Number of errors encountered during async iteration.
 
 > `protected` **\_resolvedCount**: `number` = `0`
 
-Defined in: [core/engines/async/async-lazy-collection.ts:83](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L83)
+Defined in: [core/engines/async/async-lazy-collection.ts:83](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L83)
 
 **`Internal`**
 
@@ -174,7 +174,7 @@ Maintained separately to clearly express settlement semantics.
 
 > `protected` **\_total**: `number` \| `null` = `null`
 
-Defined in: [core/engines/async/async-lazy-collection.ts:75](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L75)
+Defined in: [core/engines/async/async-lazy-collection.ts:75](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L75)
 
 **`Internal`**
 
@@ -187,7 +187,7 @@ Set at the end of a complete iteration pass.
 
 > `protected` **source**: `AsyncIterable`\<`T`\>
 
-Defined in: [core/engines/async/async-lazy-collection.ts:120](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L120)
+Defined in: [core/engines/async/async-lazy-collection.ts:120](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L120)
 
 Any `AsyncIterable<T>` — async generators, Node.js
   Readable streams (in object mode), `ReadableStream`, or any object
@@ -199,7 +199,7 @@ Any `AsyncIterable<T>` — async generators, Node.js
 
 > **\[asyncIterator\]**(): `AsyncGenerator`\<`T`, `void`, `unknown`\>
 
-Defined in: [core/engines/async/async-lazy-collection.ts:156](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L156)
+Defined in: [core/engines/async/async-lazy-collection.ts:156](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L156)
 
 Async-iterates over elements from the source one at a time.
 
@@ -251,7 +251,7 @@ for await (const item of col) {
 
 > **all**(): `Promise`\<`T`[]\>
 
-Defined in: [core/engines/async/async-lazy-collection.ts:196](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L196)
+Defined in: [core/engines/async/async-lazy-collection.ts:196](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L196)
 
 Eagerly drains the async iterable into a plain array.
 
@@ -291,7 +291,7 @@ const items = await collect(gen()).all();
 
 > **count**(): `Promise`\<`number`\>
 
-Defined in: [core/engines/async/async-lazy-collection.ts:245](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L245)
+Defined in: [core/engines/async/async-lazy-collection.ts:245](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L245)
 
 Returns the total number of elements yielded by the source.
 
@@ -320,7 +320,7 @@ await collect(gen()).count(); // drains source if not yet consumed
 
 > **current**(): `Promise`\<`T`\>
 
-Defined in: [core/engines/async/async-lazy-collection.ts:295](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L295)
+Defined in: [core/engines/async/async-lazy-collection.ts:295](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L295)
 
 Returns the most recently yielded item during async iteration.
 
@@ -354,7 +354,7 @@ for await (const item of col) {
 
 > **errors**(): `Error`[]
 
-Defined in: [core/engines/async/async-lazy-collection.ts:424](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L424)
+Defined in: [core/engines/async/async-lazy-collection.ts:424](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L424)
 
 Returns all errors thrown by the source during async iteration.
 
@@ -388,9 +388,12 @@ try {
 
 > **filter**(`fn`): `AsyncLazyCollection`\<`T`\>
 
-Defined in: [core/operators/filter.ts:22](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/filter.ts#L22)
+Defined in: [core/operators/filter.ts:87](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/filter.ts#L87)
 
-🟣 Async Lazy: Stream filter via Async Generator
+Filter elements one-by-one via an asynchronous generator.
+* Provides a memory-efficient pipeline that awaits each truth test
+before pulling the next item from the source. This prevents overwhelming
+external systems with too many concurrent requests.
 
 #### Parameters
 
@@ -398,9 +401,23 @@ Defined in: [core/operators/filter.ts:22](https://github.com/node-collection/cor
 
 (`item`) => `boolean` \| `Promise`\<`boolean`\>
 
+The async truth test logic.
+- `item`: The current element from the async source.
+
 #### Returns
 
 `AsyncLazyCollection`\<`T`\>
+
+A lazy async collection yielding filtered results sequentially.
+
+#### Example
+
+```ts
+const stream = collect(largeStream).asyncLazy().filter(async (row) => {
+return await db.exists(row.id);
+});
+// Checks database one-by-one, keeping DB load and memory flat.
+```
 
 #### Inherited from
 
@@ -412,9 +429,12 @@ Defined in: [core/operators/filter.ts:22](https://github.com/node-collection/cor
 
 > **first**(`fn?`): `Promise`\<`T` \| `null`\>
 
-Defined in: [core/operators/first.ts:11](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/first.ts#L11)
+Defined in: [core/operators/first.ts:63](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/first.ts#L63)
 
-🔵 Async: Ambil item pertama secara async
+Get the first element from an asynchronous stream.
+* **Memory Efficient:** Pulls items from the async source one-by-one
+and stops the stream as soon as the criteria is met. Ideal for
+finding a single record in massive remote datasets or large files.
 
 #### Parameters
 
@@ -422,13 +442,17 @@ Defined in: [core/operators/first.ts:11](https://github.com/node-collection/core
 
 (`item`) => `boolean` \| `Promise`\<`boolean`\>
 
+An optional async truth test logic.
+
 #### Returns
 
 `Promise`\<`T` \| `null`\>
 
+A promise resolving to the first match from the stream.
+
 #### Inherited from
 
-[`AsyncEnumerable`](../../../../contracts/enumerable/interfaces/AsyncEnumerable.md).[`first`](../../../../contracts/enumerable/interfaces/AsyncEnumerable.md#first)
+[`AsyncLazyEnumerableMethods`](../../../../contracts/enumerable/interfaces/AsyncLazyEnumerableMethods.md).[`first`](../../../../contracts/enumerable/interfaces/AsyncLazyEnumerableMethods.md#first)
 
 ***
 
@@ -436,9 +460,11 @@ Defined in: [core/operators/first.ts:11](https://github.com/node-collection/core
 
 > **map**\<`U`\>(`fn`): `AsyncLazyCollection`\<`U`\>
 
-Defined in: [core/operators/map.ts:19](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/map.ts#L19)
+Defined in: [core/operators/map.ts:90](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/map.ts#L90)
 
-🟣 Async Lazy — transform via async generator, deferred hingga diiterasi
+Transform elements one-by-one via an asynchronous generator.
+* This provides a memory-efficient pipeline for async data. It awaits the
+transformation of the current item before pulling the next one.
 
 #### Type Parameters
 
@@ -446,15 +472,33 @@ Defined in: [core/operators/map.ts:19](https://github.com/node-collection/core/b
 
 `U`
 
+The resulting type yielded by the async generator.
+
 #### Parameters
 
 ##### fn
 
 (`item`) => `U` \| `Promise`\<`U`\>
 
+The async transformation logic.
+- `item`: The current element from the async source.
+
 #### Returns
 
 `AsyncLazyCollection`\<`U`\>
+
+A lazy async collection yielding results sequentially.
+
+#### Example
+
+```ts
+const stream = collect(largeFile)
+.asyncLazy()
+.map(async (row) => await processRow(row));
+* for await (const result of stream) {
+// Processed one-by-one, keeping memory usage flat.
+}
+```
 
 #### Inherited from
 
@@ -466,9 +510,12 @@ Defined in: [core/operators/map.ts:19](https://github.com/node-collection/core/b
 
 > **pluck**\<`K`\>(`key`): `AsyncLazyCollection`\<`T`\[`K`\]\>
 
-Defined in: [core/operators/pluck.ts:19](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/pluck.ts#L19)
+Defined in: [core/operators/pluck.ts:63](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/pluck.ts#L63)
 
-🟣 Async Lazy: Pluck dari Stream
+Extract a specific property from each item in an asynchronous stream.
+* Perfect for processing large streams of objects (e.g., from a database
+cursor) where you only need one specific field, keeping memory usage
+at a minimum.
 
 #### Type Parameters
 
@@ -476,15 +523,21 @@ Defined in: [core/operators/pluck.ts:19](https://github.com/node-collection/core
 
 `K` *extends* `string` \| `number` \| `symbol`
 
+The key to pluck from each async-yielded object.
+
 #### Parameters
 
 ##### key
 
 `K`
 
+The property name to extract.
+
 #### Returns
 
 `AsyncLazyCollection`\<`T`\[`K`\]\>
+
+A lazy async collection yielding plucked results sequentially.
 
 #### Inherited from
 
@@ -496,7 +549,7 @@ Defined in: [core/operators/pluck.ts:19](https://github.com/node-collection/core
 
 > **progress**(): `Promise`\<`number`\>
 
-Defined in: [core/engines/async/async-lazy-collection.ts:345](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L345)
+Defined in: [core/engines/async/async-lazy-collection.ts:345](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L345)
 
 Returns the percentage of items yielded relative to the known total (0–100).
 
@@ -532,7 +585,7 @@ for await (const _ of col) {
 
 > **rejected**(): `number`
 
-Defined in: [core/engines/async/async-lazy-collection.ts:402](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L402)
+Defined in: [core/engines/async/async-lazy-collection.ts:402](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L402)
 
 Returns the number of errors encountered during async iteration.
 
@@ -571,7 +624,7 @@ try {
 
 > **remaining**(): `Promise`\<`number`\>
 
-Defined in: [core/engines/async/async-lazy-collection.ts:320](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L320)
+Defined in: [core/engines/async/async-lazy-collection.ts:320](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L320)
 
 Returns the number of items not yet yielded relative to the known total.
 
@@ -608,7 +661,7 @@ for await (const _ of col) {
 
 > **resolved**(): `number`
 
-Defined in: [core/engines/async/async-lazy-collection.ts:375](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L375)
+Defined in: [core/engines/async/async-lazy-collection.ts:375](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L375)
 
 Returns the number of items successfully yielded so far.
 
@@ -649,9 +702,12 @@ for await (const record of col) {
 
 > **take**(`limit`): `AsyncLazyCollection`\<`T`\>
 
-Defined in: [core/operators/take.ts:19](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/take.ts#L19)
+Defined in: [core/operators/take.ts:58](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/take.ts#L58)
 
-🟣 Async Lazy: Berhenti tarik data dari stream setelah limit tercapai
+Take a specified number of items from an asynchronous stream.
+* **Backpressure Friendly:** The async generator stops pulling data
+from the source (e.g., API, DB Cursor, or File Stream) as soon as
+the limit is met, saving bandwidth and memory.
 
 #### Parameters
 
@@ -659,9 +715,13 @@ Defined in: [core/operators/take.ts:19](https://github.com/node-collection/core/
 
 `number`
 
+The maximum number of items to pull from the stream.
+
 #### Returns
 
 `AsyncLazyCollection`\<`T`\>
+
+A lazy async collection that terminates after `limit` items.
 
 #### Inherited from
 
@@ -673,9 +733,11 @@ Defined in: [core/operators/take.ts:19](https://github.com/node-collection/core/
 
 > **tap**(`fn`): `AsyncLazyCollection`\<`T`\>
 
-Defined in: [core/operators/tap.ts:19](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/tap.ts#L19)
+Defined in: [core/operators/tap.ts:63](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/tap.ts#L63)
 
-🟣 Async Lazy: Intip data dari stream asinkron
+Tap into an asynchronous stream to perform side effects.
+* Provides a way to "spy" on the stream data. Each callback is awaited
+sequentially as items flow through the async generator.
 
 #### Parameters
 
@@ -683,9 +745,13 @@ Defined in: [core/operators/tap.ts:19](https://github.com/node-collection/core/b
 
 (`item`) => `void` \| `Promise`\<`void`\>
 
+The async side-effect logic for the stream.
+
 #### Returns
 
 `AsyncLazyCollection`\<`T`\>
+
+A lazy async collection that triggers effects as data flows.
 
 #### Inherited from
 
@@ -697,7 +763,7 @@ Defined in: [core/operators/tap.ts:19](https://github.com/node-collection/core/b
 
 > **toArray**(): `Promise`\<`T`[]\>
 
-Defined in: [core/engines/async/async-lazy-collection.ts:212](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L212)
+Defined in: [core/engines/async/async-lazy-collection.ts:212](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L212)
 
 Alias for `all`. Drains the async iterable into a plain array.
 
@@ -723,7 +789,7 @@ const arr = await collect(asyncReadableStream()).toArray();
 
 > **toJSON**(): `Promise`\<`T`[]\>
 
-Defined in: [core/engines/async/async-lazy-collection.ts:226](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L226)
+Defined in: [core/engines/async/async-lazy-collection.ts:226](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L226)
 
 Alias for `all`. Called automatically by `JSON.stringify`.
 
@@ -749,7 +815,7 @@ const json = JSON.stringify(await collect(gen()).toJSON());
 
 > **toString**(): `string`
 
-Defined in: [core/engines/async/async-lazy-collection.ts:444](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L444)
+Defined in: [core/engines/async/async-lazy-collection.ts:444](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L444)
 
 Returns a human-readable label for logging and assertion messages.
 
@@ -779,7 +845,7 @@ col.toString();
 
 > **total**(): `Promise`\<`number`\>
 
-Defined in: [core/engines/async/async-lazy-collection.ts:271](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-lazy-collection.ts#L271)
+Defined in: [core/engines/async/async-lazy-collection.ts:271](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-lazy-collection.ts#L271)
 
 Returns the total number of elements in the source.
 
@@ -821,9 +887,10 @@ await col.total();     // returns cached count immediately
 
 > **where**\<`K`\>(`key`, `value`): `AsyncLazyCollection`\<`T`\>
 
-Defined in: [core/operators/where.ts:49](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/where.ts#L49)
+Defined in: [core/operators/where.ts:88](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/where.ts#L88)
 
-🟣 Async Lazy: Filter stream
+Filter the asynchronous stream by a given key / value pair.
+* **Memory Efficient:** Compares items one-by-one as they flow from the source.
 
 ##### Type Parameters
 
@@ -853,7 +920,7 @@ Defined in: [core/operators/where.ts:49](https://github.com/node-collection/core
 
 > **where**\<`K`\>(`key`, `operator`, `value`): `AsyncLazyCollection`\<`T`\>
 
-Defined in: [core/operators/where.ts:50](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/where.ts#L50)
+Defined in: [core/operators/where.ts:89](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/where.ts#L89)
 
 ##### Type Parameters
 
@@ -869,7 +936,7 @@ Defined in: [core/operators/where.ts:50](https://github.com/node-collection/core
 
 ###### operator
 
-`string`
+[`ComparisonOperator`](../../../../types/operator/type-aliases/ComparisonOperator.md)
 
 ###### value
 

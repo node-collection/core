@@ -6,7 +6,10 @@
 
 > **PluginInstallFunction**\<`TOptions`\> = (`app`, `options`) => `void` \| `Promise`\<`void`\>
 
-Defined in: [core/plugins/types.ts:7](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/plugins/types.ts#L7)
+Defined in: [core/plugins/types.ts:27](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/plugins/types.ts#L27)
+
+The signature for a plugin's installation hook.
+* Supports both synchronous and asynchronous setup logic.
 
 ## Type Parameters
 

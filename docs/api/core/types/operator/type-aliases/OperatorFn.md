@@ -6,9 +6,11 @@
 
 > **OperatorFn**\<`TContext`, `TArgs`, `TReturn`\> = (`this`, `ctx`, ...`args`) => `TReturn`
 
-Defined in: [core/types/operator.ts:11](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L11)
+Defined in: [core/types/operator.ts:18](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/operator.ts#L18)
 
-Represents an operator function logic.
+Represents the core logic of an operator function.
+* This type defines how an operator interacts with its context and arguments.
+*
 
 ## Type Parameters
 
@@ -16,13 +18,19 @@ Represents an operator function logic.
 
 `TContext`
 
+The engine instance (e.g., Collection, LazyCollection).
+
 ### TArgs
 
 `TArgs` *extends* `unknown`[]
 
+A tuple of arguments passed to the operator.
+
 ### TReturn
 
 `TReturn`
+
+The expected return value of the operator.
 
 ## Parameters
 

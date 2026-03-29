@@ -11,3 +11,4 @@
 ## Functions
 
 - [\_\_bootstrap](functions/bootstrap.md)
+- [collect](functions/collect.md)

@@ -6,12 +6,25 @@
 
 > **MethodOf**\<`T`\> = `{ [K in keyof T]: T[K] extends (args: never[]) => unknown ? K : never }`\[keyof `T`\]
 
-Defined in: [core/types/common.ts:9](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/common.ts#L9)
+Defined in: [core/types/common.ts:20](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/common.ts#L20)
 
-Extract method names from a given type.
+Extracts only the keys of a type `T` that correspond to methods (functions).
+* This is useful for building proxy objects or decorators that only
+target class methods while ignoring properties.
+*
 
 ## Type Parameters
 
 ### T
 
 `T`
+
+The source type to extract method names from.
+*
+
+## Example
+
+```ts
+class User { id: number; save() {} }
+type UserMethods = MethodOf<User>; // "save"
+```

@@ -4,6 +4,6 @@
 
 # core/define
 
-## Variables
+## Core
 
 - [defineOperator](variables/defineOperator.md)

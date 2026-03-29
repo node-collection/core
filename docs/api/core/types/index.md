@@ -6,6 +6,30 @@
 
 ## References
 
+### AsyncLazyOperatorFn
+
+Re-exports [AsyncLazyOperatorFn](operator/type-aliases/AsyncLazyOperatorFn.md)
+
+***
+
+### AsyncOperatorFn
+
+Re-exports [AsyncOperatorFn](operator/type-aliases/AsyncOperatorFn.md)
+
+***
+
+### CollectionOperatorFn
+
+Re-exports [CollectionOperatorFn](operator/type-aliases/CollectionOperatorFn.md)
+
+***
+
+### ComparisonOperator
+
+Re-exports [ComparisonOperator](operator/type-aliases/ComparisonOperator.md)
+
+***
+
 ### Constructor
 
 Re-exports [Constructor](common/type-aliases/Constructor.md)
@@ -21,6 +45,12 @@ Re-exports [FnParams](common/type-aliases/FnParams.md)
 ### FnReturn
 
 Re-exports [FnReturn](common/type-aliases/FnReturn.md)
+
+***
+
+### LazyOperatorFn
+
+Re-exports [LazyOperatorFn](operator/type-aliases/LazyOperatorFn.md)
 
 ***
 
@@ -66,6 +96,18 @@ Re-exports [OperatorFn](operator/type-aliases/OperatorFn.md)
 
 ***
 
+### register
+
+Re-exports [register](operator/functions/register.md)
+
+***
+
 ### Unwrap
 
 Re-exports [Unwrap](common/type-aliases/Unwrap.md)
+
+***
+
+### VALID\_OPERATORS
+
+Re-exports [VALID_OPERATORS](operator/variables/VALID_OPERATORS.md)

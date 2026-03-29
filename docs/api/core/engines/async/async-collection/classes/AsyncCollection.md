@@ -4,7 +4,7 @@
 
 # Class: AsyncCollection\<T\>
 
-Defined in: [core/engines/async/async-collection.ts:4](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-collection.ts#L4)
+Defined in: [core/engines/async/async-collection.ts:4](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-collection.ts#L4)
 
 An eager, asynchronous collection backed by an array of Promises.
 
@@ -69,7 +69,7 @@ The resolved value type of each Promise.
 
 > **new AsyncCollection**\<`T`\>(`items`): `AsyncCollection`\<`T`\>
 
-Defined in: [core/engines/async/async-collection.ts:127](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-collection.ts#L127)
+Defined in: [core/engines/async/async-collection.ts:127](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-collection.ts#L127)
 
 Creates a new `AsyncCollection` from an array of Promises
 or a pre-resolved `Promise<T[]>`.
@@ -114,7 +114,7 @@ const col = collect([fetchUser(1), fetchUser(2)]);
 
 > `protected` **items**: `Promise`\<`T`[]\> \| `Promise`\<`T`\>[]
 
-Defined in: [core/engines/async/async-collection.ts:127](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-collection.ts#L127)
+Defined in: [core/engines/async/async-collection.ts:127](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-collection.ts#L127)
 
 An array of `Promise<T>` or a single `Promise<T[]>`.
 
@@ -124,7 +124,7 @@ An array of `Promise<T>` or a single `Promise<T[]>`.
 
 > **\[asyncIterator\]**(): `AsyncGenerator`\<`T`, `void`, `unknown`\>
 
-Defined in: [core/engines/async/async-collection.ts:211](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-collection.ts#L211)
+Defined in: [core/engines/async/async-collection.ts:211](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-collection.ts#L211)
 
 Async-iterates over all resolved values in input order.
 
@@ -165,7 +165,7 @@ for await (const item of col) {
 
 > **all**(): `Promise`\<`T`[]\>
 
-Defined in: [core/engines/async/async-collection.ts:252](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-collection.ts#L252)
+Defined in: [core/engines/async/async-collection.ts:252](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-collection.ts#L252)
 
 Settles and materialises all fulfilled Promises into a plain array.
 
@@ -206,7 +206,7 @@ col.errors()[0];    // Error: network error
 
 > **count**(): `Promise`\<`number`\>
 
-Defined in: [core/engines/async/async-collection.ts:323](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-collection.ts#L323)
+Defined in: [core/engines/async/async-collection.ts:323](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-collection.ts#L323)
 
 Returns the count of fulfilled items.
 
@@ -237,7 +237,7 @@ await col.count(); // 2
 
 > **current**(): `Promise`\<`T`\>
 
-Defined in: [core/engines/async/async-collection.ts:345](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-collection.ts#L345)
+Defined in: [core/engines/async/async-collection.ts:345](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-collection.ts#L345)
 
 Returns the most recently yielded item during async iteration.
 
@@ -271,7 +271,7 @@ for await (const item of col) {
 
 > **errors**(): `Error`[]
 
-Defined in: [core/engines/async/async-collection.ts:468](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-collection.ts#L468)
+Defined in: [core/engines/async/async-collection.ts:468](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-collection.ts#L468)
 
 Returns all errors collected from rejected Promises.
 
@@ -310,9 +310,12 @@ col.errors().forEach(e => console.error(e.message));
 
 > **filter**(`fn`): `AsyncCollection`\<`T`\>
 
-Defined in: [core/operators/filter.ts:18](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/filter.ts#L18)
+Defined in: [core/operators/filter.ts:65](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/filter.ts#L65)
 
-🔵 Async Eager: Filter list of Promises (Awaited)
+Filter the collection asynchronously and concurrently.
+* This method triggers all predicate checks simultaneously using `Promise.all`.
+It is highly efficient for I/O bound filtering where the order of checks
+doesn't matter, but execution speed does.
 
 #### Parameters
 
@@ -320,9 +323,23 @@ Defined in: [core/operators/filter.ts:18](https://github.com/node-collection/cor
 
 (`item`) => `boolean` \| `Promise`\<`boolean`\>
 
+An async callback.
+- `item`: The current element. Can return `boolean` or `Promise<boolean>`.
+
 #### Returns
 
 `AsyncCollection`\<`T`\>
+
+A promise-based collection resolving to the filtered results.
+
+#### Example
+
+```ts
+const activeUsers = await collect(ids).async().filter(async (id) => {
+return await api.checkStatus(id) === 'active';
+});
+// All status checks run in parallel.
+```
 
 #### Inherited from
 
@@ -334,9 +351,12 @@ Defined in: [core/operators/filter.ts:18](https://github.com/node-collection/cor
 
 > **first**(`fn?`): `Promise`\<`T` \| `null`\>
 
-Defined in: [core/operators/first.ts:11](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/first.ts#L11)
+Defined in: [core/operators/first.ts:50](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/first.ts#L50)
 
-🔵 Async: Ambil item pertama secara async
+Get the first element asynchronously.
+* If a predicate is provided, it will await each truth test sequentially
+to ensure the correct "first" occurrence is returned according to
+the collection's order.
 
 #### Parameters
 
@@ -344,13 +364,18 @@ Defined in: [core/operators/first.ts:11](https://github.com/node-collection/core
 
 (`item`) => `boolean` \| `Promise`\<`boolean`\>
 
+An optional async truth test.
+- `item`: The current element. Can return `boolean` or `Promise<boolean>`.
+
 #### Returns
 
 `Promise`\<`T` \| `null`\>
 
+A promise resolving to the first matching element, or `null`.
+
 #### Inherited from
 
-[`AsyncEnumerable`](../../../../contracts/enumerable/interfaces/AsyncEnumerable.md).[`first`](../../../../contracts/enumerable/interfaces/AsyncEnumerable.md#first)
+[`AsyncEnumerableMethods`](../../../../contracts/enumerable/interfaces/AsyncEnumerableMethods.md).[`first`](../../../../contracts/enumerable/interfaces/AsyncEnumerableMethods.md#first)
 
 ***
 
@@ -358,9 +383,11 @@ Defined in: [core/operators/first.ts:11](https://github.com/node-collection/core
 
 > **map**\<`U`\>(`fn`): `AsyncCollection`\<`U`\>
 
-Defined in: [core/operators/map.ts:15](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/map.ts#L15)
+Defined in: [core/operators/map.ts:66](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/map.ts#L66)
 
-🔵 Async Eager — transform list of Promises secara concurrent
+Transform each element asynchronously and concurrently.
+* Triggers all transformation promises simultaneously using `Promise.all`.
+Best for high-throughput I/O where execution speed is critical.
 
 #### Type Parameters
 
@@ -368,15 +395,31 @@ Defined in: [core/operators/map.ts:15](https://github.com/node-collection/core/b
 
 `U`
 
+The type of the elements after the promise resolves.
+
 #### Parameters
 
 ##### fn
 
 (`item`) => `U` \| `Promise`\<`U`\>
 
+An async callback.
+- `item`: The current element. Can return `U` or `Promise<U>`.
+
 #### Returns
 
 `AsyncCollection`\<`U`\>
+
+A promise-based collection resolving once all transformations finish.
+
+#### Example
+
+```ts
+const users = await collect([1, 2, 3])
+.async()
+.map(async (id) => await fetchUser(id));
+// All 3 fetches start at the same time (concurrently).
+```
 
 #### Inherited from
 
@@ -388,9 +431,11 @@ Defined in: [core/operators/map.ts:15](https://github.com/node-collection/core/b
 
 > **pluck**\<`K`\>(`key`): `AsyncCollection`\<`T`\[`K`\]\>
 
-Defined in: [core/operators/pluck.ts:15](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/pluck.ts#L15)
+Defined in: [core/operators/pluck.ts:49](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/pluck.ts#L49)
 
-🔵 Async Eager: Pluck dari list of Promises
+Retrieve values for a given key from an asynchronous collection.
+* This method waits for the underlying data promise to resolve,
+then extracts the specified property from every object in the list.
 
 #### Type Parameters
 
@@ -398,15 +443,21 @@ Defined in: [core/operators/pluck.ts:15](https://github.com/node-collection/core
 
 `K` *extends* `string` \| `number` \| `symbol`
 
+The key to pluck from the awaited objects.
+
 #### Parameters
 
 ##### key
 
 `K`
 
+The property name to extract.
+
 #### Returns
 
 `AsyncCollection`\<`T`\[`K`\]\>
+
+An async collection resolving to a list of plucked values.
 
 #### Inherited from
 
@@ -418,7 +469,7 @@ Defined in: [core/operators/pluck.ts:15](https://github.com/node-collection/core
 
 > **progress**(): `Promise`\<`number`\>
 
-Defined in: [core/engines/async/async-collection.ts:391](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-collection.ts#L391)
+Defined in: [core/engines/async/async-collection.ts:391](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-collection.ts#L391)
 
 Returns the percentage of items yielded in the current pass (0–100).
 
@@ -452,7 +503,7 @@ for await (const _ of col) {
 
 > **rejected**(): `number`
 
-Defined in: [core/engines/async/async-collection.ts:441](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-collection.ts#L441)
+Defined in: [core/engines/async/async-collection.ts:441](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-collection.ts#L441)
 
 Returns the count of Promises that have rejected.
 
@@ -486,7 +537,7 @@ col.rejected(); // 1
 
 > **remaining**(): `Promise`\<`number`\>
 
-Defined in: [core/engines/async/async-collection.ts:368](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-collection.ts#L368)
+Defined in: [core/engines/async/async-collection.ts:368](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-collection.ts#L368)
 
 Returns the number of items not yet consumed by the current pass.
 
@@ -521,7 +572,7 @@ for await (const _ of col) {
 
 > **resolved**(): `number`
 
-Defined in: [core/engines/async/async-collection.ts:419](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-collection.ts#L419)
+Defined in: [core/engines/async/async-collection.ts:419](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-collection.ts#L419)
 
 Returns the count of Promises that have fulfilled.
 
@@ -559,9 +610,11 @@ col.resolved(); // 2
 
 > **take**(`limit`): `AsyncCollection`\<`T`\>
 
-Defined in: [core/operators/take.ts:15](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/take.ts#L15)
+Defined in: [core/operators/take.ts:45](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/take.ts#L45)
 
-🔵 Async Eager: Ambil N data pertama dari list of Promises
+Take a specified number of items from an asynchronous collection.
+* This method waits for the underlying data promise to resolve,
+then eagerly slices the result to the requested limit.
 
 #### Parameters
 
@@ -569,9 +622,13 @@ Defined in: [core/operators/take.ts:15](https://github.com/node-collection/core/
 
 `number`
 
+The number of items to take from the resolved array.
+
 #### Returns
 
 `AsyncCollection`\<`T`\>
+
+An async collection resolving to the limited subset.
 
 #### Inherited from
 
@@ -583,9 +640,11 @@ Defined in: [core/operators/take.ts:15](https://github.com/node-collection/core/
 
 > **tap**(`fn`): `AsyncCollection`\<`T`\>
 
-Defined in: [core/operators/tap.ts:15](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/tap.ts#L15)
+Defined in: [core/operators/tap.ts:51](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/tap.ts#L51)
 
-🔵 Async Eager: Intip data list of Promises
+Tap into an asynchronous collection to perform side effects.
+* Waits for the underlying data promise to resolve, then sequentially
+executes the (potentially async) callback for every item.
 
 #### Parameters
 
@@ -593,9 +652,13 @@ Defined in: [core/operators/tap.ts:15](https://github.com/node-collection/core/b
 
 (`item`) => `void` \| `Promise`\<`void`\>
 
+An async side-effect callback. Can return `void` or `Promise<void>`.
+
 #### Returns
 
 `AsyncCollection`\<`T`\>
+
+An async collection resolving back to the original items.
 
 #### Inherited from
 
@@ -607,7 +670,7 @@ Defined in: [core/operators/tap.ts:15](https://github.com/node-collection/core/b
 
 > **toArray**(): `Promise`\<`T`[]\>
 
-Defined in: [core/engines/async/async-collection.ts:266](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-collection.ts#L266)
+Defined in: [core/engines/async/async-collection.ts:266](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-collection.ts#L266)
 
 Alias for `all`. Materialises fulfilled values as a plain array.
 
@@ -633,7 +696,7 @@ const arr = await collect([p1, p2, p3]).toArray();
 
 > **toJSON**(): `Promise`\<`T`[]\>
 
-Defined in: [core/engines/async/async-collection.ts:280](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-collection.ts#L280)
+Defined in: [core/engines/async/async-collection.ts:280](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-collection.ts#L280)
 
 Alias for `all`. Called automatically by `JSON.stringify`.
 
@@ -659,7 +722,7 @@ const json = JSON.stringify(await collect([p1, p2]).toJSON());
 
 > **toString**(): `string`
 
-Defined in: [core/engines/async/async-collection.ts:493](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-collection.ts#L493)
+Defined in: [core/engines/async/async-collection.ts:493](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-collection.ts#L493)
 
 Returns a human-readable label for logging and assertion messages.
 
@@ -694,7 +757,7 @@ col.toString();
 
 > **total**(): `Promise`\<`number`\>
 
-Defined in: [core/engines/async/async-collection.ts:302](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/async/async-collection.ts#L302)
+Defined in: [core/engines/async/async-collection.ts:302](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/async/async-collection.ts#L302)
 
 Returns the total number of inputs (fulfilled + rejected).
 
@@ -728,9 +791,10 @@ await col.total(); // 3  — resolves immediately for Promise<T>[]
 
 > **where**\<`K`\>(`key`, `value`): `AsyncCollection`\<`T`\>
 
-Defined in: [core/operators/where.ts:44](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/where.ts#L44)
+Defined in: [core/operators/where.ts:79](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/where.ts#L79)
 
-🔵 Async Eager: Filter data async
+Filter the asynchronous collection by a given key / value pair.
+* Waits for the data to resolve before applying the filter logic.
 
 ##### Type Parameters
 
@@ -760,7 +824,7 @@ Defined in: [core/operators/where.ts:44](https://github.com/node-collection/core
 
 > **where**\<`K`\>(`key`, `operator`, `value`): `AsyncCollection`\<`T`\>
 
-Defined in: [core/operators/where.ts:45](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/where.ts#L45)
+Defined in: [core/operators/where.ts:80](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/where.ts#L80)
 
 ##### Type Parameters
 
@@ -776,7 +840,7 @@ Defined in: [core/operators/where.ts:45](https://github.com/node-collection/core
 
 ###### operator
 
-`string`
+[`ComparisonOperator`](../../../../types/operator/type-aliases/ComparisonOperator.md)
 
 ###### value
 

@@ -4,9 +4,10 @@
 
 # Interface: OperatorDefinitionProps\<TSubject, TArgs, TReturn\>
 
-Defined in: [core/types/operator.ts:16](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L16)
+Defined in: [core/types/operator.ts:24](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/operator.ts#L24)
 
-Properties required to define an operator for a specific class.
+Encapsulates the relationship between a Subject (Class) and its implementation Logic.
+* Used by the Registry to map which logic to execute for which engine.
 
 ## Type Parameters
 
@@ -16,11 +17,11 @@ Properties required to define an operator for a specific class.
 
 ### TArgs
 
-`TArgs` *extends* `unknown`[] = `unknown`[]
+`TArgs` *extends* `unknown`[] = `any`[]
 
 ### TReturn
 
-`TReturn` = `unknown`
+`TReturn` = `any`
 
 ## Properties
 
@@ -28,7 +29,9 @@ Properties required to define an operator for a specific class.
 
 > `readonly` **fn**: [`OperatorFn`](../type-aliases/OperatorFn.md)\<`InstanceType`\<`TSubject`\>, `TArgs`, `TReturn`\>
 
-Defined in: [core/types/operator.ts:22](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L22)
+Defined in: [core/types/operator.ts:28](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/operator.ts#L28)
+
+The logic implementation for this specific subject
 
 ***
 
@@ -36,4 +39,6 @@ Defined in: [core/types/operator.ts:22](https://github.com/node-collection/core/
 
 > `readonly` **subject**: `TSubject`
 
-Defined in: [core/types/operator.ts:21](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L21)
+Defined in: [core/types/operator.ts:26](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/operator.ts#L26)
+
+The class constructor to target (e.g., Collection)

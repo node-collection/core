@@ -4,7 +4,7 @@
 
 # Interface: AsyncEnumerable\<T\>
 
-Defined in: [core/contracts/enumerable.ts:352](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L352)
+Defined in: [core/contracts/enumerable.ts:352](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L352)
 
 Base contract for all **asynchronous** collection engines.
 
@@ -43,7 +43,7 @@ The resolved value type held by the collection.
 
 > **all**(): `Promise`\<`T`[]\>
 
-Defined in: [core/contracts/enumerable.ts:376](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L376)
+Defined in: [core/contracts/enumerable.ts:376](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L376)
 
 Resolves and materialises all fulfilled items into a plain array.
 
@@ -78,7 +78,7 @@ const users = await collect([
 
 > **count**(): `Promise`\<`number`\>
 
-Defined in: [core/contracts/enumerable.ts:415](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L415)
+Defined in: [core/contracts/enumerable.ts:415](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L415)
 
 Returns the count of fulfilled items.
 
@@ -103,7 +103,7 @@ const n = await collect([fetchUser(1), fetchUser(2)]).count();
 
 > **current**(): `Promise`\<`T`\>
 
-Defined in: [core/contracts/enumerable.ts:435](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L435)
+Defined in: [core/contracts/enumerable.ts:435](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L435)
 
 Returns the item at the current iterator cursor position.
 
@@ -133,7 +133,7 @@ for await (const user of col) {
 
 > **errors**(): `Error`[]
 
-Defined in: [core/contracts/enumerable.ts:568](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L568)
+Defined in: [core/contracts/enumerable.ts:568](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L568)
 
 Returns all errors collected from rejected Promises.
 
@@ -164,31 +164,11 @@ col.errors().forEach(err => console.error(err.message));
 
 ***
 
-### first()
-
-> **first**(`fn?`): `Promise`\<`T` \| `null`\>
-
-Defined in: [core/operators/first.ts:11](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/first.ts#L11)
-
-🔵 Async: Ambil item pertama secara async
-
-#### Parameters
-
-##### fn?
-
-(`item`) => `boolean` \| `Promise`\<`boolean`\>
-
-#### Returns
-
-`Promise`\<`T` \| `null`\>
-
-***
-
 ### progress()
 
 > **progress**(): `Promise`\<`number`\>
 
-Defined in: [core/contracts/enumerable.ts:498](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L498)
+Defined in: [core/contracts/enumerable.ts:498](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L498)
 
 Returns the percentage of items yielded in the current pass (0–100).
 
@@ -218,7 +198,7 @@ for await (const _ of col) {
 
 > **rejected**(): `number`
 
-Defined in: [core/contracts/enumerable.ts:543](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L543)
+Defined in: [core/contracts/enumerable.ts:543](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L543)
 
 Returns the count of Promises that have rejected.
 
@@ -250,7 +230,7 @@ col.errors();   // [Error: timeout]
 
 > **remaining**(): `Promise`\<`number`\>
 
-Defined in: [core/contracts/enumerable.ts:478](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L478)
+Defined in: [core/contracts/enumerable.ts:478](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L478)
 
 Returns the number of items not yet yielded by the current pass.
 
@@ -285,7 +265,7 @@ for await (const _ of col) {
 
 > **resolved**(): `number`
 
-Defined in: [core/contracts/enumerable.ts:521](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L521)
+Defined in: [core/contracts/enumerable.ts:521](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L521)
 
 Returns the count of Promises that have fulfilled.
 
@@ -320,7 +300,7 @@ col.rejected();  // 1
 
 > **toArray**(): `Promise`\<`T`[]\>
 
-Defined in: [core/contracts/enumerable.ts:400](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L400)
+Defined in: [core/contracts/enumerable.ts:400](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L400)
 
 Alias for `all`. Drains the async iterable into a plain array.
 
@@ -342,7 +322,7 @@ const arr = await collect(asyncGenerator()).toArray();
 
 > **toJSON**(): `Promise`\<`T`[]\>
 
-Defined in: [core/contracts/enumerable.ts:388](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L388)
+Defined in: [core/contracts/enumerable.ts:388](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L388)
 
 Alias for `all`. Used by `JSON.stringify` for async serialisation.
 
@@ -364,7 +344,7 @@ const json = JSON.stringify(await collect([p1, p2]).toJSON());
 
 > **toString**(): `string`
 
-Defined in: [core/contracts/enumerable.ts:35](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L35)
+Defined in: [core/contracts/enumerable.ts:35](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L35)
 
 Returns a human-readable label identifying the engine,
 current cursor position, and total element count.
@@ -401,7 +381,7 @@ console.log(col.toString());
 
 > **total**(): `Promise`\<`number`\>
 
-Defined in: [core/contracts/enumerable.ts:453](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L453)
+Defined in: [core/contracts/enumerable.ts:453](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L453)
 
 Returns the total number of inputs (fulfilled + rejected).
 

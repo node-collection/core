@@ -4,9 +4,10 @@
 
 # Interface: OperatorBlueprintProps\<TName, TArgs, TReturn\>
 
-Defined in: [core/types/operator.ts:28](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L28)
+Defined in: [core/types/operator.ts:35](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/operator.ts#L35)
 
-A blueprint for an operator that can be applied to multiple subjects.
+A declarative blueprint for an operator, defining its name and its
+multiple implementations across different engines.
 
 ## Type Parameters
 
@@ -16,11 +17,11 @@ A blueprint for an operator that can be applied to multiple subjects.
 
 ### TArgs
 
-`TArgs` *extends* `unknown`[] = `unknown`[]
+`TArgs` *extends* `unknown`[] = `any`[]
 
 ### TReturn
 
-`TReturn` = `unknown`
+`TReturn` = `any`
 
 ## Properties
 
@@ -28,15 +29,19 @@ A blueprint for an operator that can be applied to multiple subjects.
 
 > `readonly` `optional` **category?**: `string`
 
-Defined in: [core/types/operator.ts:30](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L30)
+Defined in: [core/types/operator.ts:39](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/operator.ts#L39)
+
+Optional grouping for documentation or internal organization
 
 ***
 
 ### definitions
 
-> `readonly` **definitions**: readonly [`OperatorDefinitionProps`](OperatorDefinitionProps.md)\<[`Constructor`](../../common/type-aliases/Constructor.md)\<`object`\>, `TArgs`, `TReturn`\>[]
+> `readonly` **definitions**: readonly [`OperatorDefinitionProps`](OperatorDefinitionProps.md)\<`any`, `TArgs`, `TReturn`\>[]
 
-Defined in: [core/types/operator.ts:31](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L31)
+Defined in: [core/types/operator.ts:41](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/operator.ts#L41)
+
+Array of engine-specific implementations
 
 ***
 
@@ -44,4 +49,6 @@ Defined in: [core/types/operator.ts:31](https://github.com/node-collection/core/
 
 > `readonly` **name**: `TName`
 
-Defined in: [core/types/operator.ts:29](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L29)
+Defined in: [core/types/operator.ts:37](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/operator.ts#L37)
+
+The method name to be injected into the prototype

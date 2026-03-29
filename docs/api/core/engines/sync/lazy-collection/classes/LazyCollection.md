@@ -4,7 +4,7 @@
 
 # Class: LazyCollection\<T\>
 
-Defined in: [core/engines/sync/lazy-collection.ts:4](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L4)
+Defined in: [core/engines/sync/lazy-collection.ts:4](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L4)
 
 A lazy, synchronous collection backed by any `Iterable<T>`.
 
@@ -64,7 +64,7 @@ The type of elements yielded by the source iterable.
 
 > **new LazyCollection**\<`T`\>(`source`): `LazyCollection`\<`T`\>
 
-Defined in: [core/engines/sync/lazy-collection.ts:90](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L90)
+Defined in: [core/engines/sync/lazy-collection.ts:90](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L90)
 
 Creates a new `LazyCollection` wrapping the given iterable.
 
@@ -104,7 +104,7 @@ const col = collect(new Set([1, 2, 3]));
 
 > `protected` **\_current**: `T` \| `undefined`
 
-Defined in: [core/engines/sync/lazy-collection.ts:62](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L62)
+Defined in: [core/engines/sync/lazy-collection.ts:62](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L62)
 
 **`Internal`**
 
@@ -116,7 +116,7 @@ The most recently yielded element, or `undefined` before iteration.
 
 > `protected` **\_processed**: `number` = `0`
 
-Defined in: [core/engines/sync/lazy-collection.ts:55](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L55)
+Defined in: [core/engines/sync/lazy-collection.ts:55](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L55)
 
 **`Internal`**
 
@@ -129,7 +129,7 @@ Incremented by one for each item yielded during iteration.
 
 > `protected` **\_total**: `number` \| `null` = `null`
 
-Defined in: [core/engines/sync/lazy-collection.ts:70](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L70)
+Defined in: [core/engines/sync/lazy-collection.ts:70](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L70)
 
 **`Internal`**
 
@@ -142,7 +142,7 @@ traversed or the count is determinable from the source type.
 
 > `protected` **source**: `Iterable`\<`T`\>
 
-Defined in: [core/engines/sync/lazy-collection.ts:90](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L90)
+Defined in: [core/engines/sync/lazy-collection.ts:90](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L90)
 
 Any `Iterable<T>` — arrays, Sets, Maps, generators,
   or any object implementing `[Symbol.iterator]`.
@@ -153,7 +153,7 @@ Any `Iterable<T>` — arrays, Sets, Maps, generators,
 
 > **\[iterator\]**(): `Generator`\<`T`, `void`, `unknown`\>
 
-Defined in: [core/engines/sync/lazy-collection.ts:320](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L320)
+Defined in: [core/engines/sync/lazy-collection.ts:320](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L320)
 
 Iterates lazily over elements from the source iterable.
 
@@ -193,7 +193,7 @@ for (const item of col) {
 
 > **all**(): `T`[]
 
-Defined in: [core/engines/sync/lazy-collection.ts:114](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L114)
+Defined in: [core/engines/sync/lazy-collection.ts:114](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L114)
 
 Eagerly materialises all deferred elements into a plain array.
 
@@ -229,7 +229,7 @@ collect(range(5)).all(); // [0, 1, 2, 3, 4]
 
 > **count**(): `number`
 
-Defined in: [core/engines/sync/lazy-collection.ts:169](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L169)
+Defined in: [core/engines/sync/lazy-collection.ts:169](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L169)
 
 Returns the total number of elements in the source iterable.
 
@@ -258,7 +258,7 @@ collect(new Set([1, 2, 3])).count(); // 3
 
 > **current**(): `T` \| `undefined`
 
-Defined in: [core/engines/sync/lazy-collection.ts:224](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L224)
+Defined in: [core/engines/sync/lazy-collection.ts:224](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L224)
 
 Returns the element at the current iterator cursor position.
 
@@ -291,9 +291,12 @@ for (const item of col) {
 
 > **filter**(`fn`): `LazyCollection`\<`T`\>
 
-Defined in: [core/operators/filter.ts:14](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/filter.ts#L14)
+Defined in: [core/operators/filter.ts:43](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/filter.ts#L43)
 
-🟡 Sync Lazy: Predicate diperiksa saat iterasi berjalan
+Filter the collection lazily as it is being iterated.
+* The predicate logic is deferred until a terminal method is called.
+Each item is tested "just-in-time", making it ideal for large datasets
+where you only need a few matching results.
 
 #### Parameters
 
@@ -301,9 +304,21 @@ Defined in: [core/operators/filter.ts:14](https://github.com/node-collection/cor
 
 (`item`) => `boolean`
 
+The truth test logic.
+- `item`: The current element provided by the generator.
+
 #### Returns
 
 `LazyCollection`\<`T`\>
+
+A new lazy collection that yields filtered items.
+
+#### Example
+
+```ts
+const firstLarge = collect(bigArray).lazy().filter(n => n > 1000).first();
+// Only iterates until the first match is found.
+```
 
 #### Inherited from
 
@@ -315,9 +330,12 @@ Defined in: [core/operators/filter.ts:14](https://github.com/node-collection/cor
 
 > **first**(`fn?`): `T` \| `null`
 
-Defined in: [core/operators/first.ts:7](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/first.ts#L7)
+Defined in: [core/operators/first.ts:36](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/first.ts#L36)
 
-🎯 Sync: Ambil item pertama (atau yang lolos kriteria)
+Get the first element lazily.
+* **Short-circuiting:** This is highly efficient as it stops the
+generator immediately once a match is found, avoiding unnecessary
+processing of the remaining items.
 
 #### Parameters
 
@@ -325,13 +343,17 @@ Defined in: [core/operators/first.ts:7](https://github.com/node-collection/core/
 
 (`item`) => `boolean`
 
+An optional truth test logic.
+
 #### Returns
 
 `T` \| `null`
 
+The first matching element, or `null`.
+
 #### Inherited from
 
-[`Enumerable`](../../../../contracts/enumerable/interfaces/Enumerable.md).[`first`](../../../../contracts/enumerable/interfaces/Enumerable.md#first)
+[`LazyEnumerableMethods`](../../../../contracts/enumerable/interfaces/LazyEnumerableMethods.md).[`first`](../../../../contracts/enumerable/interfaces/LazyEnumerableMethods.md#first)
 
 ***
 
@@ -339,9 +361,11 @@ Defined in: [core/operators/first.ts:7](https://github.com/node-collection/core/
 
 > **map**\<`U`\>(`fn`): `LazyCollection`\<`U`\>
 
-Defined in: [core/operators/map.ts:11](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/map.ts#L11)
+Defined in: [core/operators/map.ts:44](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/map.ts#L44)
 
-🟡 Sync Lazy — transform via generator, deferred hingga diiterasi
+Transform each element lazily as the collection is being iterated.
+* Unlike eager map, this uses a generator pipeline. The transformation
+is deferred until a terminal method (like `.toArray()`) is called.
 
 #### Type Parameters
 
@@ -349,15 +373,30 @@ Defined in: [core/operators/map.ts:11](https://github.com/node-collection/core/b
 
 `U`
 
+The type of the elements in the resulting lazy collection.
+
 #### Parameters
 
 ##### fn
 
 (`item`) => `U`
 
+The transformation logic applied to each item.
+- `item`: The current element provided by the generator.
+
 #### Returns
 
 `LazyCollection`\<`U`\>
+
+A new lazy collection that yields transformed items.
+
+#### Example
+
+```ts
+const lazy = collect([1, 2, 3]).lazy().map(n => n * 10);
+// No transformation happens yet.
+console.log(lazy.first()); // 10 (Only the first item is processed)
+```
 
 #### Inherited from
 
@@ -369,9 +408,12 @@ Defined in: [core/operators/map.ts:11](https://github.com/node-collection/core/b
 
 > **pluck**\<`K`\>(`key`): `LazyCollection`\<`T`\[`K`\]\>
 
-Defined in: [core/operators/pluck.ts:11](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/pluck.ts#L11)
+Defined in: [core/operators/pluck.ts:36](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/pluck.ts#L36)
 
-🟡 Sync Lazy: Pluck via Generator
+Retrieve values for a given key lazily.
+* The extraction is deferred until the collection is iterated. This
+is highly efficient when you only need to pluck properties from
+a subset of a massive dataset.
 
 #### Type Parameters
 
@@ -379,15 +421,21 @@ Defined in: [core/operators/pluck.ts:11](https://github.com/node-collection/core
 
 `K` *extends* `string` \| `number` \| `symbol`
 
+The key to pluck from each yielded object.
+
 #### Parameters
 
 ##### key
 
 `K`
 
+The property name to extract.
+
 #### Returns
 
 `LazyCollection`\<`T`\[`K`\]\>
+
+A new lazy collection yielding the plucked values.
 
 #### Inherited from
 
@@ -399,7 +447,7 @@ Defined in: [core/operators/pluck.ts:11](https://github.com/node-collection/core
 
 > **processed**(): `number`
 
-Defined in: [core/engines/sync/lazy-collection.ts:292](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L292)
+Defined in: [core/engines/sync/lazy-collection.ts:292](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L292)
 
 Returns the number of elements consumed so far.
 
@@ -428,7 +476,7 @@ col.processed(); // 1
 
 > **progress**(): `number`
 
-Defined in: [core/engines/sync/lazy-collection.ts:269](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L269)
+Defined in: [core/engines/sync/lazy-collection.ts:269](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L269)
 
 Returns the percentage of elements yielded in the current pass (0–100).
 
@@ -461,7 +509,7 @@ for (const _ of col) {
 
 > **remaining**(): `number` \| `null`
 
-Defined in: [core/engines/sync/lazy-collection.ts:248](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L248)
+Defined in: [core/engines/sync/lazy-collection.ts:248](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L248)
 
 Returns the number of elements not yet consumed by the current pass.
 
@@ -497,9 +545,12 @@ for (const _ of col) {
 
 > **take**(`limit`): `LazyCollection`\<`T`\>
 
-Defined in: [core/operators/take.ts:11](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/take.ts#L11)
+Defined in: [core/operators/take.ts:33](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/take.ts#L33)
 
-🟡 Sync Lazy: Berhenti iterasi tepat setelah limit tercapai
+Take a specified number of items lazily.
+* **Short-circuiting:** This is highly efficient because the generator
+stops iterating immediately once the limit is reached. It avoids
+processing any subsequent items in the pipeline.
 
 #### Parameters
 
@@ -507,9 +558,13 @@ Defined in: [core/operators/take.ts:11](https://github.com/node-collection/core/
 
 `number`
 
+The maximum number of items to yield.
+
 #### Returns
 
 `LazyCollection`\<`T`\>
+
+A new lazy collection that stops after `limit` items.
 
 #### Inherited from
 
@@ -521,9 +576,12 @@ Defined in: [core/operators/take.ts:11](https://github.com/node-collection/core/
 
 > **tap**(`fn`): `LazyCollection`\<`T`\>
 
-Defined in: [core/operators/tap.ts:11](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/tap.ts#L11)
+Defined in: [core/operators/tap.ts:39](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/tap.ts#L39)
 
-🟡 Sync Lazy: Intip data saat iterasi berjalan
+Tap into the collection lazily.
+* **Deferred Side Effects:** The callback is NOT executed immediately.
+It will only run for each item as it is being pulled through the
+generator pipeline.
 
 #### Parameters
 
@@ -531,9 +589,22 @@ Defined in: [core/operators/tap.ts:11](https://github.com/node-collection/core/b
 
 (`item`) => `void`
 
+The side-effect logic to run during iteration.
+
 #### Returns
 
 `LazyCollection`\<`T`\>
+
+A new lazy collection that triggers side effects upon iteration.
+*
+
+#### Example
+
+```ts
+const lazy = collect([1, 2]).lazy().tap(n => console.log(n));
+// Nothing logged yet.
+lazy.first(); // Logs: 1
+```
 
 #### Inherited from
 
@@ -545,7 +616,7 @@ Defined in: [core/operators/tap.ts:11](https://github.com/node-collection/core/b
 
 > **toArray**(): `T`[]
 
-Defined in: [core/engines/sync/lazy-collection.ts:132](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L132)
+Defined in: [core/engines/sync/lazy-collection.ts:132](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L132)
 
 Alias for `all`. Materialises all elements into a plain array.
 
@@ -572,7 +643,7 @@ collect(new Map([['a', 1], ['b', 2]])).toArray();
 
 > **toJSON**(): `T`[]
 
-Defined in: [core/engines/sync/lazy-collection.ts:150](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L150)
+Defined in: [core/engines/sync/lazy-collection.ts:150](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L150)
 
 Serialises the collection to a plain array for `JSON.stringify`.
 
@@ -602,7 +673,7 @@ JSON.stringify(collect(new Set([1, 2, 3])));
 
 > **toString**(): `string`
 
-Defined in: [core/engines/sync/lazy-collection.ts:348](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L348)
+Defined in: [core/engines/sync/lazy-collection.ts:348](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L348)
 
 Returns a human-readable label for logging and assertion messages.
 
@@ -632,7 +703,7 @@ col.toString();
 
 > **total**(): `number`
 
-Defined in: [core/engines/sync/lazy-collection.ts:197](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/lazy-collection.ts#L197)
+Defined in: [core/engines/sync/lazy-collection.ts:197](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/lazy-collection.ts#L197)
 
 Returns the total number of elements in the source iterable.
 
@@ -676,9 +747,10 @@ collect(gen()).total(); // 2  — O(n), traverses generator
 
 > **where**\<`K`\>(`key`, `value`): `LazyCollection`\<`T`\>
 
-Defined in: [core/operators/where.ts:39](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/where.ts#L39)
+Defined in: [core/operators/where.ts:70](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/where.ts#L70)
 
-🟡 Sync Lazy: Filter via generator
+Filter the collection lazily by a given key / value pair.
+* **Short-circuiting:** Comparison happens only when items are pulled.
 
 ##### Type Parameters
 
@@ -708,7 +780,7 @@ Defined in: [core/operators/where.ts:39](https://github.com/node-collection/core
 
 > **where**\<`K`\>(`key`, `operator`, `value`): `LazyCollection`\<`T`\>
 
-Defined in: [core/operators/where.ts:40](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/where.ts#L40)
+Defined in: [core/operators/where.ts:71](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/where.ts#L71)
 
 ##### Type Parameters
 
@@ -724,7 +796,7 @@ Defined in: [core/operators/where.ts:40](https://github.com/node-collection/core
 
 ###### operator
 
-`string`
+[`ComparisonOperator`](../../../../types/operator/type-aliases/ComparisonOperator.md)
 
 ###### value
 

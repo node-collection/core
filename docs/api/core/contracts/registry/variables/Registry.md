@@ -6,7 +6,7 @@
 
 > `const` **Registry**: `object`
 
-Defined in: [core/contracts/registry.ts:93](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/registry.ts#L93)
+Defined in: [core/contracts/registry.ts:93](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/registry.ts#L93)
 
 Tracks all operators injected via `defineOperator` using a WeakMap-based
 Virtual Method Table (vTable).

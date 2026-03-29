@@ -6,12 +6,25 @@
 
 > **Unwrap**\<`T`\> = `T` *extends* `Iterable`\<infer U\> ? `U` : `T` *extends* `AsyncIterable`\<infer V\> ? `V` : `T`
 
-Defined in: [core/types/common.ts:26](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/common.ts#L26)
+Defined in: [core/types/common.ts:51](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/common.ts#L51)
 
-Unwrap an Iterable or AsyncIterable to get the underlying type.
+Unwraps the underlying value type from an `Iterable` or `AsyncIterable`.
+* This is the "secret sauce" for the collection engines, allowing the
+system to know that an `AsyncIterable<User>` contains `User` objects.
+*
 
 ## Type Parameters
 
 ### T
 
 `T`
+
+The iterable or async iterable to unwrap.
+*
+
+## Example
+
+```ts
+type Item = Unwrap<string[]>; // string
+type AsyncItem = Unwrap<AsyncIterable<number>>; // number
+```

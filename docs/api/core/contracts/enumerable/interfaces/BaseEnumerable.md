@@ -4,7 +4,7 @@
 
 # Interface: BaseEnumerable\<T\>
 
-Defined in: [core/contracts/enumerable.ts:13](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L13)
+Defined in: [core/contracts/enumerable.ts:13](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L13)
 
 Marker interface shared by every collection engine.
 
@@ -32,7 +32,7 @@ The element type held by the collection.
 
 > **toString**(): `string`
 
-Defined in: [core/contracts/enumerable.ts:35](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L35)
+Defined in: [core/contracts/enumerable.ts:35](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L35)
 
 Returns a human-readable label identifying the engine,
 current cursor position, and total element count.

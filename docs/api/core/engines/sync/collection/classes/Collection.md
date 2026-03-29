@@ -4,7 +4,7 @@
 
 # Class: Collection\<T\>
 
-Defined in: [core/engines/sync/collection.ts:4](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/collection.ts#L4)
+Defined in: [core/engines/sync/collection.ts:4](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/collection.ts#L4)
 
 An eager, synchronous collection backed by a plain JavaScript array.
 
@@ -56,7 +56,7 @@ The type of elements held by this collection.
 
 > **new Collection**\<`T`\>(`items`): `Collection`\<`T`\>
 
-Defined in: [core/engines/sync/collection.ts:65](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/collection.ts#L65)
+Defined in: [core/engines/sync/collection.ts:65](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/collection.ts#L65)
 
 Creates a new `Collection` wrapping the given array.
 
@@ -94,7 +94,7 @@ const col = collect([1, 2, 3]);
 
 > `protected` **\_cursor**: `number` = `0`
 
-Defined in: [core/engines/sync/collection.ts:47](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/collection.ts#L47)
+Defined in: [core/engines/sync/collection.ts:47](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/collection.ts#L47)
 
 **`Internal`**
 
@@ -107,7 +107,7 @@ during a `for...of` loop. Reset to `0` at the start of each pass.
 
 > `protected` **items**: `T`[]
 
-Defined in: [core/engines/sync/collection.ts:65](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/collection.ts#L65)
+Defined in: [core/engines/sync/collection.ts:65](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/collection.ts#L65)
 
 The source `T[]` to wrap.
 
@@ -117,7 +117,7 @@ The source `T[]` to wrap.
 
 > **\[iterator\]**(): `Generator`\<`T`, `void`, `unknown`\>
 
-Defined in: [core/engines/sync/collection.ts:289](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/collection.ts#L289)
+Defined in: [core/engines/sync/collection.ts:289](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/collection.ts#L289)
 
 Iterates over all elements in insertion order.
 
@@ -157,7 +157,7 @@ const [first, second] = col; // 10, 20
 
 > **all**(): `T`[]
 
-Defined in: [core/engines/sync/collection.ts:87](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/collection.ts#L87)
+Defined in: [core/engines/sync/collection.ts:87](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/collection.ts#L87)
 
 Materialises all elements into a new plain array.
 
@@ -191,7 +191,7 @@ items.push(99); // safe — does not mutate the collection
 
 > **count**(): `number`
 
-Defined in: [core/engines/sync/collection.ts:152](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/collection.ts#L152)
+Defined in: [core/engines/sync/collection.ts:152](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/collection.ts#L152)
 
 Returns the total number of elements in the collection.
 
@@ -224,7 +224,7 @@ collect(['a', 'b', 'c']).count(); // 3
 
 > **current**(): `T` \| `undefined`
 
-Defined in: [core/engines/sync/collection.ts:192](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/collection.ts#L192)
+Defined in: [core/engines/sync/collection.ts:192](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/collection.ts#L192)
 
 Returns the element at the current iterator cursor position.
 
@@ -258,9 +258,12 @@ for (const item of col) {
 
 > **filter**(`fn`): `Collection`\<`T`\>
 
-Defined in: [core/operators/filter.ts:10](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/filter.ts#L10)
+Defined in: [core/operators/filter.ts:23](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/filter.ts#L23)
 
-🟢 Sync Eager: Filter array secara langsung
+Filter the collection using the given callback.
+* This method iterates through the entire collection immediately (eagerly)
+and returns a new Collection containing only the elements that
+pass the truth test.
 
 #### Parameters
 
@@ -268,9 +271,21 @@ Defined in: [core/operators/filter.ts:10](https://github.com/node-collection/cor
 
 (`item`) => `boolean`
 
+The truth test callback.
+- `item`: The current element being tested.
+
 #### Returns
 
 `Collection`\<`T`\>
+
+A new collection instance with the filtered elements.
+
+#### Example
+
+```ts
+const evens = collect([1, 2, 3, 4]).filter(n => n % 2 === 0);
+// Collection { items: [2, 4] }
+```
 
 #### Inherited from
 
@@ -282,9 +297,12 @@ Defined in: [core/operators/filter.ts:10](https://github.com/node-collection/cor
 
 > **first**(`fn?`): `T` \| `null`
 
-Defined in: [core/operators/first.ts:7](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/first.ts#L7)
+Defined in: [core/operators/first.ts:23](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/first.ts#L23)
 
-🎯 Sync: Ambil item pertama (atau yang lolos kriteria)
+Get the first element in the collection, or the first element that
+passes a given truth test.
+* This method will return `null` if the collection is empty or if
+no element passes the test.
 
 #### Parameters
 
@@ -292,13 +310,25 @@ Defined in: [core/operators/first.ts:7](https://github.com/node-collection/core/
 
 (`item`) => `boolean`
 
+An optional truth test callback.
+- `item`: The current element being tested.
+
 #### Returns
 
 `T` \| `null`
 
+The first matching element, or `null` if none found.
+
+#### Example
+
+```ts
+collect([1, 2, 3]).first(); // 1
+collect([1, 2, 3]).first(n => n > 1); // 2
+```
+
 #### Inherited from
 
-[`Enumerable`](../../../../contracts/enumerable/interfaces/Enumerable.md).[`first`](../../../../contracts/enumerable/interfaces/Enumerable.md#first)
+[`EnumerableMethods`](../../../../contracts/enumerable/interfaces/EnumerableMethods.md).[`first`](../../../../contracts/enumerable/interfaces/EnumerableMethods.md#first)
 
 ***
 
@@ -306,9 +336,11 @@ Defined in: [core/operators/first.ts:7](https://github.com/node-collection/core/
 
 > **map**\<`U`\>(`fn`): `Collection`\<`U`\>
 
-Defined in: [core/operators/map.ts:7](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/map.ts#L7)
+Defined in: [core/operators/map.ts:23](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/map.ts#L23)
 
-🟢 Sync Eager — transform tiap item, hasilkan Collection baru
+Transform each element in the collection using a callback function.
+* This method iterates through the entire collection immediately (eagerly)
+and returns a new Collection containing the results.
 
 #### Type Parameters
 
@@ -316,15 +348,29 @@ Defined in: [core/operators/map.ts:7](https://github.com/node-collection/core/bl
 
 `U`
 
+The type of the elements in the resulting collection.
+
 #### Parameters
 
 ##### fn
 
 (`item`) => `U`
 
+The transformation callback.
+- `item`: The current element being processed.
+
 #### Returns
 
 `Collection`\<`U`\>
+
+A new collection instance with the transformed elements.
+
+#### Example
+
+```ts
+const doubled = collect([1, 2, 3]).map(n => n * 2);
+// Collection { items: [2, 4, 6] }
+```
 
 #### Inherited from
 
@@ -336,9 +382,11 @@ Defined in: [core/operators/map.ts:7](https://github.com/node-collection/core/bl
 
 > **pluck**\<`K`\>(`key`): `Collection`\<`T`\[`K`\]\>
 
-Defined in: [core/operators/pluck.ts:7](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/pluck.ts#L7)
+Defined in: [core/operators/pluck.ts:22](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/pluck.ts#L22)
 
-🟢 Sync Eager: Ambil satu properti dari tiap object
+Retrieve all of the values for a given key from the collection.
+* This method is ideal for extracting a single column or property from
+a collection of objects into a flat collection of values.
 
 #### Type Parameters
 
@@ -346,15 +394,28 @@ Defined in: [core/operators/pluck.ts:7](https://github.com/node-collection/core/
 
 `K` *extends* `string` \| `number` \| `symbol`
 
+A valid key (property name) of the objects in the collection.
+
 #### Parameters
 
 ##### key
 
 `K`
 
+The name of the property to retrieve.
+
 #### Returns
 
 `Collection`\<`T`\[`K`\]\>
+
+A new collection containing only the values of the specified key.
+
+#### Example
+
+```ts
+const users = collect([{ id: 1, name: 'Adi' }, { id: 2, name: 'Budi' }]);
+const names = users.pluck('name'); // ['Adi', 'Budi']
+```
 
 #### Inherited from
 
@@ -366,7 +427,7 @@ Defined in: [core/operators/pluck.ts:7](https://github.com/node-collection/core/
 
 > **processed**(): `number`
 
-Defined in: [core/engines/sync/collection.ts:261](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/collection.ts#L261)
+Defined in: [core/engines/sync/collection.ts:261](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/collection.ts#L261)
 
 Returns the number of elements that have been visited during
 the current (or most recent) `for...of` pass.
@@ -394,7 +455,7 @@ col.processed(); // 1
 
 > **progress**(): `number`
 
-Defined in: [core/engines/sync/collection.ts:239](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/collection.ts#L239)
+Defined in: [core/engines/sync/collection.ts:239](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/collection.ts#L239)
 
 Returns the percentage of elements yielded in the current pass (0–100).
 
@@ -431,7 +492,7 @@ for (const _ of col) {
 
 > **remaining**(): `number`
 
-Defined in: [core/engines/sync/collection.ts:214](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/collection.ts#L214)
+Defined in: [core/engines/sync/collection.ts:214](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/collection.ts#L214)
 
 Returns the number of elements not yet consumed by the current pass.
 
@@ -465,9 +526,11 @@ for (const _ of col) {
 
 > **take**(`limit`): `Collection`\<`T`\>
 
-Defined in: [core/operators/take.ts:7](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/take.ts#L7)
+Defined in: [core/operators/take.ts:20](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/take.ts#L20)
 
-🟢 Sync Eager: Ambil N data pertama dari Array
+Create a new collection with a specified number of items from the start.
+* This method eagerly slices the underlying array and returns a new
+Collection containing only the first `limit` elements.
 
 #### Parameters
 
@@ -475,9 +538,19 @@ Defined in: [core/operators/take.ts:7](https://github.com/node-collection/core/b
 
 `number`
 
+The number of items to take. If negative, 0 is used.
+
 #### Returns
 
 `Collection`\<`T`\>
+
+A new collection with the limited subset of items.
+
+#### Example
+
+```ts
+collect([1, 2, 3, 4, 5]).take(3); // [1, 2, 3]
+```
 
 #### Inherited from
 
@@ -489,9 +562,11 @@ Defined in: [core/operators/take.ts:7](https://github.com/node-collection/core/b
 
 > **tap**(`fn`): `Collection`\<`T`\>
 
-Defined in: [core/operators/tap.ts:7](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/tap.ts#L7)
+Defined in: [core/operators/tap.ts:20](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/tap.ts#L20)
 
-🟢 Sync Eager: Intip data Array
+Tap into the collection to perform side effects without modifying the elements.
+* This method eagerly iterates through the entire collection immediately,
+executes the callback for each item, and returns the original collection.
 
 #### Parameters
 
@@ -499,9 +574,19 @@ Defined in: [core/operators/tap.ts:7](https://github.com/node-collection/core/bl
 
 (`item`) => `void`
 
+The side-effect callback. Receives the current `item`.
+
 #### Returns
 
 `Collection`\<`T`\>
+
+The original collection instance.
+
+#### Example
+
+```ts
+collect([1, 2, 3]).tap(n => console.log(n)); // Logs 1, 2, 3 immediately
+```
 
 #### Inherited from
 
@@ -513,7 +598,7 @@ Defined in: [core/operators/tap.ts:7](https://github.com/node-collection/core/bl
 
 > **toArray**(): `T`[]
 
-Defined in: [core/engines/sync/collection.ts:110](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/collection.ts#L110)
+Defined in: [core/engines/sync/collection.ts:110](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/collection.ts#L110)
 
 Alias for `all`. Drains the collection into a plain array.
 
@@ -544,7 +629,7 @@ const arr = collect(new Set([1, 2, 3])).toArray();
 
 > **toJSON**(): `T`[]
 
-Defined in: [core/engines/sync/collection.ts:129](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/collection.ts#L129)
+Defined in: [core/engines/sync/collection.ts:129](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/collection.ts#L129)
 
 Serialises the collection to a plain array for `JSON.stringify`.
 
@@ -575,7 +660,7 @@ const json = JSON.stringify(collect([{ id: 1 }, { id: 2 }]));
 
 > **toString**(): `string`
 
-Defined in: [core/engines/sync/collection.ts:317](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/collection.ts#L317)
+Defined in: [core/engines/sync/collection.ts:317](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/collection.ts#L317)
 
 Returns a human-readable label for logging and assertion messages.
 
@@ -605,7 +690,7 @@ col.toString();
 
 > **total**(): `number`
 
-Defined in: [core/engines/sync/collection.ts:170](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/engines/sync/collection.ts#L170)
+Defined in: [core/engines/sync/collection.ts:170](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/engines/sync/collection.ts#L170)
 
 Returns the total number of elements in the collection.
 
@@ -637,9 +722,10 @@ col.total(); // 4
 
 > **where**\<`K`\>(`key`, `value`): `Collection`\<`T`\>
 
-Defined in: [core/operators/where.ts:34](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/where.ts#L34)
+Defined in: [core/operators/where.ts:50](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/where.ts#L50)
 
-🟢 Sync Eager: Filter berdasarkan key & value
+Filter the collection by a given key / value pair (Strict Equality).
+*
 
 ##### Type Parameters
 
@@ -653,13 +739,26 @@ Defined in: [core/operators/where.ts:34](https://github.com/node-collection/core
 
 `K`
 
+The property name to filter by.
+
 ###### value
 
 `T`\[`K`\]
 
+The expected value to match.
+
 ##### Returns
 
 `Collection`\<`T`\>
+
+A new collection containing only matching elements.
+*
+
+##### Example
+
+```ts
+collect(users).where('active', true);
+```
 
 ##### Inherited from
 
@@ -669,7 +768,10 @@ Defined in: [core/operators/where.ts:34](https://github.com/node-collection/core
 
 > **where**\<`K`\>(`key`, `operator`, `value`): `Collection`\<`T`\>
 
-Defined in: [core/operators/where.ts:35](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/where.ts#L35)
+Defined in: [core/operators/where.ts:62](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/where.ts#L62)
+
+Filter the collection using a custom comparison operator.
+*
 
 ##### Type Parameters
 
@@ -683,17 +785,32 @@ Defined in: [core/operators/where.ts:35](https://github.com/node-collection/core
 
 `K`
 
+The property name to filter by.
+
 ###### operator
 
-`string`
+[`ComparisonOperator`](../../../../types/operator/type-aliases/ComparisonOperator.md)
+
+Valid comparison operator: '==', '===', '!=', '!==', '>', '<', '>=', '<=', 'contains'.
 
 ###### value
 
 `any`
 
+The value to compare against.
+
 ##### Returns
 
 `Collection`\<`T`\>
+
+A new collection containing only matching elements.
+*
+
+##### Example
+
+```ts
+collect(products).where('price', '>', 100);
+```
 
 ##### Inherited from
 

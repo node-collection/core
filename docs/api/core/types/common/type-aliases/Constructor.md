@@ -6,15 +6,20 @@
 
 > **Constructor**\<`T`\> = (...`args`) => `T`
 
-Defined in: [core/types/common.ts:4](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/common.ts#L4)
+Defined in: [core/types/common.ts:7](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/common.ts#L7)
 
-Represents a class constructor.
+Represents a class constructor that can be instantiated with `new`.
+* Used primarily for dependency injection and factory patterns within
+the collection engines.
+*
 
 ## Type Parameters
 
 ### T
 
 `T` = `object`
+
+The instance type that the constructor produces.
 
 ## Parameters
 

@@ -4,13 +4,13 @@
 
 # core/plugins/types
 
-## Interfaces
+## Extension
 
 - [NodeCollectionPlugin](interfaces/NodeCollectionPlugin.md)
+
+## Other
+
 - [PluginApp](interfaces/PluginApp.md)
-
-## Type Aliases
-
 - [PluginInstallFunction](type-aliases/PluginInstallFunction.md)
 - [PluginOptionsTuple](type-aliases/PluginOptionsTuple.md)
 - [RegisteredOperators](type-aliases/RegisteredOperators.md)

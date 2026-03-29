@@ -4,10 +4,10 @@
 
 # core/plugins/manager
 
-## Classes
+## Core
 
 - [PluginManager](classes/PluginManager.md)
 
-## Variables
+## Other
 
 - [pluginManager](variables/pluginManager.md)

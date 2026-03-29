@@ -1,10 +1,16 @@
 import { defineOperator } from '../define';
 import { AsyncCollection, AsyncLazyCollection, Collection, LazyCollection } from '../engines';
+import { ComparisonOperator, register } from '../types';
 
-/** 🛠️ Helper: Comparison Engine (Laravel Style) */
-function compare(itemValue: any, operator: string, value?: any): boolean {
-  const actualValue = value === undefined ? operator : value;
-  const actualOperator = value === undefined ? '===' : operator;
+/**
+ * Internal comparison engine with strict operator typing.
+ * Handles Laravel-style polymorphic arguments.
+ */
+function compare(itemValue: any, operator: ComparisonOperator | any, value?: any): boolean {
+  // Logic: If 'value' is undefined, the 2nd arg is the 'target value' (default to ===)
+  const isDirectMatch = value === undefined;
+  const actualValue = isDirectMatch ? operator : value;
+  const actualOperator: ComparisonOperator = isDirectMatch ? '===' : operator;
 
   switch (actualOperator) {
     case '===':
@@ -24,40 +30,75 @@ function compare(itemValue: any, operator: string, value?: any): boolean {
     case 'contains':
       return Array.isArray(itemValue) ? itemValue.includes(actualValue) : false;
     default:
+      // Fallback for safety, though TS should prevent this
       return itemValue === actualValue;
   }
 }
 
 declare module '@/core/contracts/enumerable' {
   interface EnumerableMethods<T> {
-    /** 🟢 Sync Eager: Filter berdasarkan key & value */
+    /**
+     * Filter the collection by a given key / value pair (Strict Equality).
+     * * @param key - The property name to filter by.
+     * @param value - The expected value to match.
+     * @returns A new collection containing only matching elements.
+     * * @example
+     * ```ts
+     * collect(users).where('active', true);
+     * ```
+     */
     where<K extends keyof T>(key: K, value: T[K]): Collection<T>;
-    where<K extends keyof T>(key: K, operator: string, value: any): Collection<T>;
+    /**
+     * Filter the collection using a custom comparison operator.
+     * * @param key - The property name to filter by.
+     * @param operator - Valid comparison operator: '==', '===', '!=', '!==', '>', '<', '>=', '<=', 'contains'.
+     * @param value - The value to compare against.
+     * @returns A new collection containing only matching elements.
+     * * @example
+     * ```ts
+     * collect(products).where('price', '>', 100);
+     * ```
+     */
+    where<K extends keyof T>(key: K, operator: ComparisonOperator, value: any): Collection<T>;
   }
+
   interface LazyEnumerableMethods<T> {
-    /** 🟡 Sync Lazy: Filter via generator */
+    /**
+     * Filter the collection lazily by a given key / value pair.
+     * * **Short-circuiting:** Comparison happens only when items are pulled.
+     */
     where<K extends keyof T>(key: K, value: T[K]): LazyCollection<T>;
-    where<K extends keyof T>(key: K, operator: string, value: any): LazyCollection<T>;
+    where<K extends keyof T>(key: K, operator: ComparisonOperator, value: any): LazyCollection<T>;
   }
+
   interface AsyncEnumerableMethods<T> {
-    /** 🔵 Async Eager: Filter data async */
+    /**
+     * Filter the asynchronous collection by a given key / value pair.
+     * * Waits for the data to resolve before applying the filter logic.
+     */
     where<K extends keyof T>(key: K, value: T[K]): AsyncCollection<T>;
-    where<K extends keyof T>(key: K, operator: string, value: any): AsyncCollection<T>;
+    where<K extends keyof T>(key: K, operator: ComparisonOperator, value: any): AsyncCollection<T>;
   }
+
   interface AsyncLazyEnumerableMethods<T> {
-    /** 🟣 Async Lazy: Filter stream */
+    /**
+     * Filter the asynchronous stream by a given key / value pair.
+     * * **Memory Efficient:** Compares items one-by-one as they flow from the source.
+     */
     where<K extends keyof T>(key: K, value: T[K]): AsyncLazyCollection<T>;
-    where<K extends keyof T>(key: K, operator: string, value: any): AsyncLazyCollection<T>;
+    where<K extends keyof T>(key: K, operator: ComparisonOperator, value: any): AsyncLazyCollection<T>;
   }
 }
 
-/** 🟢 1. Sync Eager */
-defineOperator('where', Collection, function <T>(ctx: Collection<T>, key: keyof T, op: any, val?: any) {
-  return new Collection(ctx.all().filter((item) => compare(item[key], op, val)));
-});
+// ============================================================================
+// LOGIC IMPLEMENTATIONS
+// ============================================================================
 
-/** 🟡 2. Sync Lazy */
-defineOperator('where', LazyCollection, function <T>(ctx: LazyCollection<T>, key: keyof T, op: any, val?: any) {
+const eagerSync = <T>(ctx: Collection<T>, key: keyof T, op: any, val?: any) => {
+  return new Collection(ctx.all().filter((item) => compare(item[key], op, val)));
+};
+
+const lazySync = <T>(ctx: LazyCollection<T>, key: keyof T, op: any, val?: any) => {
   return new LazyCollection(
     (function* () {
       for (const item of ctx) {
@@ -65,15 +106,13 @@ defineOperator('where', LazyCollection, function <T>(ctx: LazyCollection<T>, key
       }
     })(),
   );
-});
+};
 
-/** 🔵 3. Async Eager */
-defineOperator('where', AsyncCollection, function <T>(ctx: AsyncCollection<T>, key: keyof T, op: any, val?: any) {
+const eagerAsync = <T>(ctx: AsyncCollection<T>, key: keyof T, op: any, val?: any) => {
   return new AsyncCollection(ctx.all().then((items) => items.filter((item) => compare(item[key], op, val))));
-});
+};
 
-/** 🟣 4. Async Lazy */
-defineOperator('where', AsyncLazyCollection, function <T>(ctx: AsyncLazyCollection<T>, key: keyof T, op: any, val?: any) {
+const lazyAsync = <T>(ctx: AsyncLazyCollection<T>, key: keyof T, op: any, val?: any) => {
   return new AsyncLazyCollection(
     (async function* () {
       for await (const item of ctx) {
@@ -81,4 +120,15 @@ defineOperator('where', AsyncLazyCollection, function <T>(ctx: AsyncLazyCollecti
       }
     })(),
   );
-});
+};
+
+// ============================================================================
+// REGISTRATION
+// ============================================================================
+
+defineOperator('where', [
+  register(Collection, eagerSync),
+  register(LazyCollection, lazySync),
+  register(AsyncCollection, eagerAsync),
+  register(AsyncLazyCollection, lazyAsync),
+]);

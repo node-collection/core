@@ -4,29 +4,18 @@
 
 # Interface: OperatorDefinitionApi()
 
-Defined in: [core/types/operator.ts:51](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L51)
+Defined in: [core/types/operator.ts:58](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/operator.ts#L58)
 
-Define a new operator and attach it to the target collection prototypes.
-* This method uses the Registry to prevent duplicate injections and
-ensures type-safety across different collection engines.
-*
-
-## Example
-
-```ts
-defineOperator('map', Collection, (ctx, fn) => { ... });
-```
+The unified API for defining operators. Supports multiple overloads
+for single or bulk registration.
 
 ## Call Signature
 
 > **OperatorDefinitionApi**\<`TName`, `TArgs`, `TReturn`\>(`props`): `void`
 
-Defined in: [core/types/operator.ts:52](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L52)
+Defined in: [core/types/operator.ts:60](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/operator.ts#L60)
 
-Define a new operator and attach it to the target collection prototypes.
-* This method uses the Registry to prevent duplicate injections and
-ensures type-safety across different collection engines.
-*
+Define using a single blueprint object
 
 ### Type Parameters
 
@@ -52,22 +41,13 @@ ensures type-safety across different collection engines.
 
 `void`
 
-### Example
-
-```ts
-defineOperator('map', Collection, (ctx, fn) => { ... });
-```
-
 ## Call Signature
 
 > **OperatorDefinitionApi**\<`TSubject`, `TArgs`, `TReturn`\>(`name`, `subject`, `fn`): `void`
 
-Defined in: [core/types/operator.ts:54](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L54)
+Defined in: [core/types/operator.ts:63](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/operator.ts#L63)
 
-Define a new operator and attach it to the target collection prototypes.
-* This method uses the Registry to prevent duplicate injections and
-ensures type-safety across different collection engines.
-*
+Fast-track definition for a single implementation
 
 ### Type Parameters
 
@@ -101,22 +81,13 @@ ensures type-safety across different collection engines.
 
 `void`
 
-### Example
-
-```ts
-defineOperator('map', Collection, (ctx, fn) => { ... });
-```
-
 ## Call Signature
 
 > **OperatorDefinitionApi**(`props`): `void`
 
-Defined in: [core/types/operator.ts:60](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L60)
+Defined in: [core/types/operator.ts:70](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/operator.ts#L70)
 
-Define a new operator and attach it to the target collection prototypes.
-* This method uses the Registry to prevent duplicate injections and
-ensures type-safety across different collection engines.
-*
+Bulk registration via a collection object
 
 ### Parameters
 
@@ -128,22 +99,13 @@ ensures type-safety across different collection engines.
 
 `void`
 
-### Example
-
-```ts
-defineOperator('map', Collection, (ctx, fn) => { ... });
-```
-
 ## Call Signature
 
 > **OperatorDefinitionApi**(`name`, `definitions`): `void`
 
-Defined in: [core/types/operator.ts:62](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L62)
+Defined in: [core/types/operator.ts:73](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/operator.ts#L73)
 
-Define a new operator and attach it to the target collection prototypes.
-* This method uses the Registry to prevent duplicate injections and
-ensures type-safety across different collection engines.
-*
+Define using a name and an array of definitions
 
 ### Parameters
 
@@ -153,41 +115,8 @@ ensures type-safety across different collection engines.
 
 #### definitions
 
-readonly [`OperatorDefinitionProps`](OperatorDefinitionProps.md)\<[`Constructor`](../../common/type-aliases/Constructor.md)\<`object`\>, `unknown`[], `unknown`\>[]
+readonly [`OperatorDefinitionProps`](OperatorDefinitionProps.md)\<`any`, `any`, `any`\>[]
 
 ### Returns
 
 `void`
-
-### Example
-
-```ts
-defineOperator('map', Collection, (ctx, fn) => { ... });
-```
-
-## Call Signature
-
-> **OperatorDefinitionApi**(`blueprint`): `void`
-
-Defined in: [core/types/operator.ts:64](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L64)
-
-Define a new operator and attach it to the target collection prototypes.
-* This method uses the Registry to prevent duplicate injections and
-ensures type-safety across different collection engines.
-*
-
-### Parameters
-
-#### blueprint
-
-[`OperatorBlueprintProps`](OperatorBlueprintProps.md)
-
-### Returns
-
-`void`
-
-### Example
-
-```ts
-defineOperator('map', Collection, (ctx, fn) => { ... });
-```

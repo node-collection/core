@@ -4,11 +4,17 @@
 
 # Function: use()
 
+**`Internal`**
+
+Implementation of the polymorphic use function.
+
 ## Call Signature
 
 > **use**(`plugins`): `Promise`\<`void`[]\>
 
-Defined in: [core/plugins/use.ts:4](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/plugins/use.ts#L4)
+Defined in: [core/plugins/use.ts:17](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/plugins/use.ts#L17)
+
+Bulk register multiple plugins.
 
 ### Parameters
 
@@ -16,15 +22,21 @@ Defined in: [core/plugins/use.ts:4](https://github.com/node-collection/core/blob
 
 [`NodeCollectionPlugin`](../../types/interfaces/NodeCollectionPlugin.md)\<`any`\>[]
 
+An array of plugins to install concurrently.
+
 ### Returns
 
 `Promise`\<`void`[]\>
+
+A promise that resolves when all plugins are installed.
 
 ## Call Signature
 
 > **use**\<`TOptions`\>(`plugin`): `Promise`\<`void`\>
 
-Defined in: [core/plugins/use.ts:5](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/plugins/use.ts#L5)
+Defined in: [core/plugins/use.ts:23](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/plugins/use.ts#L23)
+
+Register a single plugin that doesn't require options.
 
 ### Type Parameters
 
@@ -38,6 +50,8 @@ Defined in: [core/plugins/use.ts:5](https://github.com/node-collection/core/blob
 
 [`NodeCollectionPlugin`](../../types/interfaces/NodeCollectionPlugin.md)\<`TOptions`\>
 
+The plugin instance to install.
+
 ### Returns
 
 `Promise`\<`void`\>
@@ -46,7 +60,9 @@ Defined in: [core/plugins/use.ts:5](https://github.com/node-collection/core/blob
 
 > **use**\<`TOptions`\>(`plugin`, `options`): `Promise`\<`void`\>
 
-Defined in: [core/plugins/use.ts:6](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/plugins/use.ts#L6)
+Defined in: [core/plugins/use.ts:30](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/plugins/use.ts#L30)
+
+Register a single plugin with mandatory or optional configuration.
 
 ### Type Parameters
 
@@ -60,9 +76,13 @@ Defined in: [core/plugins/use.ts:6](https://github.com/node-collection/core/blob
 
 [`NodeCollectionPlugin`](../../types/interfaces/NodeCollectionPlugin.md)\<`TOptions`\>
 
+The plugin instance to install.
+
 #### options
 
-`TOptions` *extends* `void` ? `never` : `TOptions`
+`TOptions`
+
+The configuration object required by the plugin.
 
 ### Returns
 

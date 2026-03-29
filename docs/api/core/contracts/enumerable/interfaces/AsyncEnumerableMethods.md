@@ -4,7 +4,7 @@
 
 # Interface: AsyncEnumerableMethods\<T\>
 
-Defined in: [core/contracts/enumerable.ts:132](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/contracts/enumerable.ts#L132)
+Defined in: [core/contracts/enumerable.ts:132](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/contracts/enumerable.ts#L132)
 
 Extension surface for operators targeting the eager asynchronous engine.
 
@@ -52,9 +52,12 @@ The element type of the async collection being extended.
 
 > **filter**(`fn`): [`AsyncCollection`](../../../engines/async/async-collection/classes/AsyncCollection.md)\<`T`\>
 
-Defined in: [core/operators/filter.ts:18](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/filter.ts#L18)
+Defined in: [core/operators/filter.ts:65](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/filter.ts#L65)
 
-🔵 Async Eager: Filter list of Promises (Awaited)
+Filter the collection asynchronously and concurrently.
+* This method triggers all predicate checks simultaneously using `Promise.all`.
+It is highly efficient for I/O bound filtering where the order of checks
+doesn't matter, but execution speed does.
 
 #### Parameters
 
@@ -62,9 +65,51 @@ Defined in: [core/operators/filter.ts:18](https://github.com/node-collection/cor
 
 (`item`) => `boolean` \| `Promise`\<`boolean`\>
 
+An async callback.
+- `item`: The current element. Can return `boolean` or `Promise<boolean>`.
+
 #### Returns
 
 [`AsyncCollection`](../../../engines/async/async-collection/classes/AsyncCollection.md)\<`T`\>
+
+A promise-based collection resolving to the filtered results.
+
+#### Example
+
+```ts
+const activeUsers = await collect(ids).async().filter(async (id) => {
+return await api.checkStatus(id) === 'active';
+});
+// All status checks run in parallel.
+```
+
+***
+
+### first()
+
+> **first**(`fn?`): `Promise`\<`T` \| `null`\>
+
+Defined in: [core/operators/first.ts:50](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/first.ts#L50)
+
+Get the first element asynchronously.
+* If a predicate is provided, it will await each truth test sequentially
+to ensure the correct "first" occurrence is returned according to
+the collection's order.
+
+#### Parameters
+
+##### fn?
+
+(`item`) => `boolean` \| `Promise`\<`boolean`\>
+
+An optional async truth test.
+- `item`: The current element. Can return `boolean` or `Promise<boolean>`.
+
+#### Returns
+
+`Promise`\<`T` \| `null`\>
+
+A promise resolving to the first matching element, or `null`.
 
 ***
 
@@ -72,9 +117,11 @@ Defined in: [core/operators/filter.ts:18](https://github.com/node-collection/cor
 
 > **map**\<`U`\>(`fn`): [`AsyncCollection`](../../../engines/async/async-collection/classes/AsyncCollection.md)\<`U`\>
 
-Defined in: [core/operators/map.ts:15](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/map.ts#L15)
+Defined in: [core/operators/map.ts:66](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/map.ts#L66)
 
-🔵 Async Eager — transform list of Promises secara concurrent
+Transform each element asynchronously and concurrently.
+* Triggers all transformation promises simultaneously using `Promise.all`.
+Best for high-throughput I/O where execution speed is critical.
 
 #### Type Parameters
 
@@ -82,15 +129,31 @@ Defined in: [core/operators/map.ts:15](https://github.com/node-collection/core/b
 
 `U`
 
+The type of the elements after the promise resolves.
+
 #### Parameters
 
 ##### fn
 
 (`item`) => `U` \| `Promise`\<`U`\>
 
+An async callback.
+- `item`: The current element. Can return `U` or `Promise<U>`.
+
 #### Returns
 
 [`AsyncCollection`](../../../engines/async/async-collection/classes/AsyncCollection.md)\<`U`\>
+
+A promise-based collection resolving once all transformations finish.
+
+#### Example
+
+```ts
+const users = await collect([1, 2, 3])
+.async()
+.map(async (id) => await fetchUser(id));
+// All 3 fetches start at the same time (concurrently).
+```
 
 ***
 
@@ -98,9 +161,11 @@ Defined in: [core/operators/map.ts:15](https://github.com/node-collection/core/b
 
 > **pluck**\<`K`\>(`key`): [`AsyncCollection`](../../../engines/async/async-collection/classes/AsyncCollection.md)\<`T`\[`K`\]\>
 
-Defined in: [core/operators/pluck.ts:15](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/pluck.ts#L15)
+Defined in: [core/operators/pluck.ts:49](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/pluck.ts#L49)
 
-🔵 Async Eager: Pluck dari list of Promises
+Retrieve values for a given key from an asynchronous collection.
+* This method waits for the underlying data promise to resolve,
+then extracts the specified property from every object in the list.
 
 #### Type Parameters
 
@@ -108,15 +173,21 @@ Defined in: [core/operators/pluck.ts:15](https://github.com/node-collection/core
 
 `K` *extends* `string` \| `number` \| `symbol`
 
+The key to pluck from the awaited objects.
+
 #### Parameters
 
 ##### key
 
 `K`
 
+The property name to extract.
+
 #### Returns
 
 [`AsyncCollection`](../../../engines/async/async-collection/classes/AsyncCollection.md)\<`T`\[`K`\]\>
+
+An async collection resolving to a list of plucked values.
 
 ***
 
@@ -124,9 +195,11 @@ Defined in: [core/operators/pluck.ts:15](https://github.com/node-collection/core
 
 > **take**(`limit`): [`AsyncCollection`](../../../engines/async/async-collection/classes/AsyncCollection.md)\<`T`\>
 
-Defined in: [core/operators/take.ts:15](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/take.ts#L15)
+Defined in: [core/operators/take.ts:45](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/take.ts#L45)
 
-🔵 Async Eager: Ambil N data pertama dari list of Promises
+Take a specified number of items from an asynchronous collection.
+* This method waits for the underlying data promise to resolve,
+then eagerly slices the result to the requested limit.
 
 #### Parameters
 
@@ -134,9 +207,13 @@ Defined in: [core/operators/take.ts:15](https://github.com/node-collection/core/
 
 `number`
 
+The number of items to take from the resolved array.
+
 #### Returns
 
 [`AsyncCollection`](../../../engines/async/async-collection/classes/AsyncCollection.md)\<`T`\>
+
+An async collection resolving to the limited subset.
 
 ***
 
@@ -144,9 +221,11 @@ Defined in: [core/operators/take.ts:15](https://github.com/node-collection/core/
 
 > **tap**(`fn`): [`AsyncCollection`](../../../engines/async/async-collection/classes/AsyncCollection.md)\<`T`\>
 
-Defined in: [core/operators/tap.ts:15](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/tap.ts#L15)
+Defined in: [core/operators/tap.ts:51](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/tap.ts#L51)
 
-🔵 Async Eager: Intip data list of Promises
+Tap into an asynchronous collection to perform side effects.
+* Waits for the underlying data promise to resolve, then sequentially
+executes the (potentially async) callback for every item.
 
 #### Parameters
 
@@ -154,9 +233,13 @@ Defined in: [core/operators/tap.ts:15](https://github.com/node-collection/core/b
 
 (`item`) => `void` \| `Promise`\<`void`\>
 
+An async side-effect callback. Can return `void` or `Promise<void>`.
+
 #### Returns
 
 [`AsyncCollection`](../../../engines/async/async-collection/classes/AsyncCollection.md)\<`T`\>
+
+An async collection resolving back to the original items.
 
 ***
 
@@ -166,9 +249,10 @@ Defined in: [core/operators/tap.ts:15](https://github.com/node-collection/core/b
 
 > **where**\<`K`\>(`key`, `value`): [`AsyncCollection`](../../../engines/async/async-collection/classes/AsyncCollection.md)\<`T`\>
 
-Defined in: [core/operators/where.ts:44](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/where.ts#L44)
+Defined in: [core/operators/where.ts:79](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/where.ts#L79)
 
-🔵 Async Eager: Filter data async
+Filter the asynchronous collection by a given key / value pair.
+* Waits for the data to resolve before applying the filter logic.
 
 ##### Type Parameters
 
@@ -194,7 +278,7 @@ Defined in: [core/operators/where.ts:44](https://github.com/node-collection/core
 
 > **where**\<`K`\>(`key`, `operator`, `value`): [`AsyncCollection`](../../../engines/async/async-collection/classes/AsyncCollection.md)\<`T`\>
 
-Defined in: [core/operators/where.ts:45](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/operators/where.ts#L45)
+Defined in: [core/operators/where.ts:80](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/operators/where.ts#L80)
 
 ##### Type Parameters
 
@@ -210,7 +294,7 @@ Defined in: [core/operators/where.ts:45](https://github.com/node-collection/core
 
 ###### operator
 
-`string`
+[`ComparisonOperator`](../../../types/operator/type-aliases/ComparisonOperator.md)
 
 ###### value
 

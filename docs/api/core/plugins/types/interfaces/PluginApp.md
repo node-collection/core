@@ -4,7 +4,9 @@
 
 # Interface: PluginApp
 
-Defined in: [core/plugins/types.ts:9](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/plugins/types.ts#L9)
+Defined in: [core/plugins/types.ts:32](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/plugins/types.ts#L32)
+
+The bridge provided to every plugin during the installation phase.
 
 ## Properties
 
@@ -12,7 +14,9 @@ Defined in: [core/plugins/types.ts:9](https://github.com/node-collection/core/bl
 
 > **context**: [`PluginContext`](../../context/interfaces/PluginContext.md)
 
-Defined in: [core/plugins/types.ts:10](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/plugins/types.ts#L10)
+Defined in: [core/plugins/types.ts:34](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/plugins/types.ts#L34)
+
+Global environment and library context
 
 ***
 
@@ -20,4 +24,6 @@ Defined in: [core/plugins/types.ts:10](https://github.com/node-collection/core/b
 
 > **defineOperator**: [`OperatorDefinitionApi`](../../../types/operator/interfaces/OperatorDefinitionApi.md)
 
-Defined in: [core/plugins/types.ts:11](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/plugins/types.ts#L11)
+Defined in: [core/plugins/types.ts:36](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/plugins/types.ts#L36)
+
+Access to the internal prototype injection engine

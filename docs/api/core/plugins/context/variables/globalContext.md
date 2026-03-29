@@ -6,4 +6,7 @@
 
 > `const` **globalContext**: [`PluginContext`](../interfaces/PluginContext.md)
 
-Defined in: [core/plugins/context.ts:5](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/plugins/context.ts#L5)
+Defined in: [core/plugins/context.ts:16](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/plugins/context.ts#L16)
+
+Initialized global context.
+Falls back to 'development' if NODE_ENV is not set.

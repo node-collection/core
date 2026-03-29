@@ -4,17 +4,19 @@
 
 # Interface: OperatorCollectionProps
 
-Defined in: [core/types/operator.ts:37](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L37)
+Defined in: [core/types/operator.ts:47](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/operator.ts#L47)
 
-A collection of blueprints for bulk registration.
+A container for bulk operator registration.
 
 ## Properties
 
 ### blueprints
 
-> `readonly` **blueprints**: readonly [`OperatorBlueprintProps`](OperatorBlueprintProps.md)\<`string`, `unknown`[], `unknown`\>[]
+> `readonly` **blueprints**: readonly [`OperatorBlueprintProps`](OperatorBlueprintProps.md)\<`string`, `any`, `any`\>[]
 
-Defined in: [core/types/operator.ts:39](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L39)
+Defined in: [core/types/operator.ts:51](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/operator.ts#L51)
+
+List of blueprints to register
 
 ***
 
@@ -22,4 +24,6 @@ Defined in: [core/types/operator.ts:39](https://github.com/node-collection/core/
 
 > `readonly` `optional` **namespace?**: `string`
 
-Defined in: [core/types/operator.ts:38](https://github.com/node-collection/core/blob/5862e745b196fa150803d8bd3e83ae8604324f73/src/core/types/operator.ts#L38)
+Defined in: [core/types/operator.ts:49](https://github.com/node-collection/core/blob/2fc8c36acc0b00976721e60bbd5bd5c41e41a6ab/src/core/types/operator.ts#L49)
+
+Optional prefix for the operator names
